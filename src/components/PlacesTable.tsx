@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {Button} from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 
 const StyledTableCell = withStyles((theme: Theme) =>
@@ -46,7 +45,7 @@ const PlacesTable = (props: Props) => {
     const classes = useStyles();
     const navigate = useNavigate()
 
-  const handleEnrich = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, placeId: string) => {
+  const handleEnrich = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, placeId: string) => {
       e.preventDefault()
       navigate(`/chat/${placeId}`)
   }
@@ -57,18 +56,27 @@ const PlacesTable = (props: Props) => {
         <TableHead>
           <TableRow>
             <StyledTableCell>Fitness Center</StyledTableCell>
+            <StyledTableCell>Name of Employee</StyledTableCell>
+            <StyledTableCell>Booking Link</StyledTableCell>
             <StyledTableCell>Address</StyledTableCell>
             <StyledTableCell>Phone Number</StyledTableCell>
             <StyledTableCell>Rating</StyledTableCell>
             <StyledTableCell>Website URL</StyledTableCell>
-            <StyledTableCell>Actions</StyledTableCell>
+            <StyledTableCell>Type of Industry</StyledTableCell>
+            {/* <StyledTableCell>Actions</StyledTableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((singlePlaceData) => (
-            <StyledTableRow key={singlePlaceData.data_id}>
+            <StyledTableRow key={singlePlaceData.data_id} onClick={(e) => handleEnrich(e,singlePlaceData.place_id )} style={{ cursor: 'pointer'}}>
               <StyledTableCell component="th" scope="row">
                 {singlePlaceData.title}
+              </StyledTableCell>
+              <StyledTableCell>
+                 {singlePlaceData?.employee ?? '-'}
+              </StyledTableCell>
+              <StyledTableCell>
+                {singlePlaceData?.booking_link ?? '-'}
               </StyledTableCell>
               <StyledTableCell>{singlePlaceData.address}</StyledTableCell>
               <StyledTableCell>{singlePlaceData.phone}</StyledTableCell>
@@ -77,8 +85,11 @@ const PlacesTable = (props: Props) => {
                 <a href={`${singlePlaceData.website}`} target="_blank" rel="noopener noreferrer">Link</a>
               </StyledTableCell>
               <StyledTableCell>
-                 <Button variant='outlined' onClick={(e) => handleEnrich(e,singlePlaceData.place_id )}>Enrich</Button>
+                 {singlePlaceData.type}
               </StyledTableCell>
+              {/* <StyledTableCell>
+                 <Button variant='outlined' onClick={(e) => handleEnrich(e,singlePlaceData.place_id )}>Enrich</Button>
+              </StyledTableCell> */}
             </StyledTableRow>
           ))}
         </TableBody>

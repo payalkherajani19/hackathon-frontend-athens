@@ -67,6 +67,7 @@ const Prompt = (props: PromptProps) => {
             color="primary"
             className={classes.button}
             onClick={handleGenerateOutput}
+            disabled={input === ''}
           >
             Generate
           </Button>
