@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import Spinner from "../components/Spinner";
 import data from '../data.json'
+import useCustomContext from "../Hook";
 
 const useStyles = makeStyles((theme) => ({
   projects: {
@@ -44,6 +45,8 @@ const ProjectPage = () => {
   const [openProjectForm, setOpenProjectForm] = useState(false);
   const [projectName, setProjectName] = useState("")
   const [loading, setLoading] = useState(false)
+  const { state } = useCustomContext()
+  console.log(state,"state g")
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
      e.preventDefault()

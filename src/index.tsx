@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { Provider } from "./Context";
 
 const theme = createTheme({
   palette: {
@@ -28,11 +29,13 @@ const theme = createTheme({
 const rootEl = document.getElementById("root");
 
 ReactDOM.render(
+  <Provider>
   <ThemeProvider theme={theme}>
     {" "}
     <CssBaseline />
     <App />
-  </ThemeProvider>,
+  </ThemeProvider>
+  </Provider>,
   rootEl
 );
 

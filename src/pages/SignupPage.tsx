@@ -16,6 +16,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { LinkedIn } from "react-linkedin-login-oauth2";
 import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
+import useCustomContext from "../Hook";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,9 +59,16 @@ const useStyles = makeStyles((theme) => ({
 const App: React.FC = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const { state, setState } = useCustomContext()
+  console.log({ state })
 
   const handleSubmit = () => {
-    navigate("/places");
+    navigate("/projects");
+    setState({ ...state, user: {
+      id: '1',
+      name: 'Payal Kherajani', 
+      email: 'payalkherajani@appointy.com'
+    }})
   };
 
   return (
