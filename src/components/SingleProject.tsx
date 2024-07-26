@@ -45,12 +45,9 @@ const SingleProject = () => {
           return p;
         }
       });
-      console.log("useEffect", selectedProject)
+
       setState({ ...state, selectedProject: selectedProject })
-
   },[])
-
-  console.log(state, "state in single project")
 
   return (
     <Layout>
@@ -67,6 +64,7 @@ const SingleProject = () => {
               >
                 Generate with AI
               </Button>
+              <p>Let AI generate lists, find information, build intelligence, craft personalized emails for your work</p>
             </Grid>
             <Grid item xs={3}>
               <Button

@@ -6,13 +6,14 @@ import PlacesTable from "../components/PlacesTable";
 import { Grid, Typography } from "@material-ui/core";
 import Layout from "../components/Layout";
 import useCustomContext from "../Hook";
+import Prompt from "../components/Prompt";
 
 const PlacesListPage = () => {
-  const [finalSearchTerm, setFinalSearchTerm] = useState<string>("");
   const [placesData, setPlacesData] = useState<Array<any>>([]);
   const { state, setState } = useCustomContext();
+  const [prompt, setPrompt] = useState('')
   const getListOfData = async () => {
-    if (finalSearchTerm) {
+    if (prompt) {
       try {
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/todos/2"
@@ -35,13 +36,7 @@ const PlacesListPage = () => {
 
   useEffect(() => {
     getListOfData();
-  }, [finalSearchTerm]);
-
-  const handleSearch = (searchTerm: string) => {
-    setFinalSearchTerm(searchTerm);
-  };
-
-  console.log({ finalSearchTerm, placesData });
+  }, [prompt]);
 
   return (
     <div>
@@ -52,7 +47,7 @@ const PlacesListPage = () => {
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <SearchComponent onSearch={handleSearch} />
+              <Prompt prompt={prompt} setPrompt={setPrompt} />
             </Grid>
             <Grid item xs={12}>
               {placesData.length > 0 && <PlacesTable data={placesData} />}
