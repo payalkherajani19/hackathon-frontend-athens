@@ -4,7 +4,9 @@ import React, { useState } from 'react'
 export const Context = React.createContext({} as any)
 
 const initialState = {
-   user: []
+   user: {},
+   usersProjects: [],
+   selectedProject: []
 }
 
 interface Props {

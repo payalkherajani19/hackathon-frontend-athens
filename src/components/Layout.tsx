@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import Header from "./Header";
 import SidebarCommonList from "./SidebarCommonList";
+import useCustomContext from "../Hook";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,7 @@ const Layout = (props: Props) => {
   const { children } = props;
 
   const classes = useStyles();
+  const { state } = useCustomContext()
 
   return (
     <div className={classes.root}>
@@ -54,7 +56,7 @@ const Layout = (props: Props) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Container>
-          <Typography variant="h1">Lead Generation</Typography>
+          <Typography variant="h1">Welcome {state.user.name ?? ''}</Typography>
           { children && (<Box className="children">{children}</Box>)} 
         </Container>
       </main>

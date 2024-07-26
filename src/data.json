@@ -766,11 +766,11 @@
     ],
     "projects": [
         {
-            "id": 1,
+            "id": "1",
             "name": "Project Name 1"
         },
         {
-            "id": 2,
+            "id": "2",
             "name": "Project Name 2"
         }
     ]

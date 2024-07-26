@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PlacesListPage from "./pages/PlacesListPage";
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate, useNavigate } from 'react-router-dom'
 import ChatPage from "./pages/ChatPage";
 import SignupPage from "./pages/SignupPage";
 import ProjectPage from "./pages/ProjectPage";
+import SingleProject from "./components/SingleProject";
+import useCustomContext from "./Hook";
+
+
+
+interface WrapperProps {
+  children: React.ReactElement
+}
+
+const Wrapper = (props: WrapperProps) => {
+   const { children } = props 
+   const { state } = useCustomContext()
+   const navigate = useNavigate()
+
+   useEffect(() => {
+    console.log("checking empty user", state.user)
+     if(Object.keys(state.user).length === 0){
+         navigate('/register')
+     }
+   },[])
+
+    return (
+      <>
+        {children }
+      </>
+    )
+}
 
 
 function App() {
@@ -11,11 +38,12 @@ function App() {
     <div className="App">
           <BrowserRouter>
            <Routes>
-               <Route element={<ProjectPage />} path="projects" />
-               <Route element={<PlacesListPage /> }  path="places"/>
-               <Route element={<ChatPage />} path="chat/:placeId" />
+               <Route element={<Wrapper><ProjectPage /></Wrapper>} path="projects" />
+               <Route element={<Wrapper><SingleProject /></Wrapper>} path="project/:id" />
+               <Route element={<Wrapper><PlacesListPage /></Wrapper> }  path="places"/>
+               <Route element={<Wrapper><ChatPage /></Wrapper>} path="chat/:placeId" />
                <Route element={<SignupPage />} path="register" />
-               <Navigate to='projects' />
+               <Navigate to='register' />
            </Routes>
           </BrowserRouter>
     </div>

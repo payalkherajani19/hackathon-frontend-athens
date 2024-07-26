@@ -3,13 +3,14 @@ import axios from "axios";
 import SearchComponent from "../components/SearchComponent";
 import data from "../data.json";
 import PlacesTable from "../components/PlacesTable";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import Layout from "../components/Layout";
-
+import useCustomContext from "../Hook";
 
 const PlacesListPage = () => {
   const [finalSearchTerm, setFinalSearchTerm] = useState<string>("");
   const [placesData, setPlacesData] = useState<Array<any>>([]);
+  const { state, setState } = useCustomContext();
   const getListOfData = async () => {
     if (finalSearchTerm) {
       try {
@@ -45,14 +46,19 @@ const PlacesListPage = () => {
   return (
     <div>
       <Layout>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <SearchComponent onSearch={handleSearch} />
-        </Grid>
-        <Grid item xs={12}>
-          {placesData.length > 0 && <PlacesTable data={placesData} />}
-        </Grid>
-      </Grid>
+        <>
+          <Typography variant="body1">
+            {state.selectedProject?.[0]?.name}
+          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <SearchComponent onSearch={handleSearch} />
+            </Grid>
+            <Grid item xs={12}>
+              {placesData.length > 0 && <PlacesTable data={placesData} />}
+            </Grid>
+          </Grid>
+        </>
       </Layout>
     </div>
   );

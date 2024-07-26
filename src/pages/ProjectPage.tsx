@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import {
   Box,
@@ -15,6 +15,7 @@ import {
 import Spinner from "../components/Spinner";
 import data from '../data.json'
 import useCustomContext from "../Hook";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   projects: {
@@ -45,7 +46,8 @@ const ProjectPage = () => {
   const [openProjectForm, setOpenProjectForm] = useState(false);
   const [projectName, setProjectName] = useState("")
   const [loading, setLoading] = useState(false)
-  const { state } = useCustomContext()
+  const { state, setState } = useCustomContext()
+  const navigate = useNavigate()
   console.log(state,"state g")
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -66,6 +68,14 @@ const ProjectPage = () => {
     setProjectName("")
   }
 
+  const handleNavigateToSingleProject = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, id: string) => {
+     navigate(`/project/${id}`)
+  }
+
+  useEffect(() => {
+     setState({ ...state, usersProjects: data.projects })
+  },[])
+
   return (
     <Layout>
       <Box className={classes.projects}>
@@ -80,7 +90,7 @@ const ProjectPage = () => {
                   {
                     data.projects.map((project) => {
                         return (
-                             <Grid item xs={3} key={project.id}>
+                             <Grid item xs={3} key={project.id} style={{ cursor: 'pointer'}} onClick={(e) => handleNavigateToSingleProject(e, project.id)}>
                                    <Paper className={classes.paper}>{project.name}</Paper>
                              </Grid>   
                         )
