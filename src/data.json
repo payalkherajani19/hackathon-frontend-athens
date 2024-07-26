@@ -773,5 +773,15 @@
             "id": "2",
             "name": "Project Name 2"
         }
+    ],
+    "email": [
+        {
+            "id": "1",
+            "subject": "Discover How [Your Company Name] Can Simplify [Prospect's Pain Point],",
+            "greeting": "",
+            "body": "",
+            "footer": ""
+
+        }
     ]
 }

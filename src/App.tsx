@@ -5,6 +5,7 @@ import ChatPage from "./pages/ChatPage";
 import SignupPage from "./pages/SignupPage";
 import ProjectPage from "./pages/ProjectPage";
 import SingleProject from "./components/SingleProject";
+import PropspectsSalon from './pages/ProspectsSalon'
 import useCustomContext from "./Hook";
 
 
@@ -41,7 +42,7 @@ function App() {
                <Route element={<Wrapper><ProjectPage /></Wrapper>} path="projects" />
                <Route element={<Wrapper><SingleProject /></Wrapper>} path="project/:id" />
                <Route element={<Wrapper><PlacesListPage /></Wrapper> }  path="places"/>
-               <Route element={<Wrapper><ChatPage /></Wrapper>} path="chat/:placeId" />
+               <Route element={<Wrapper><PropspectsSalon /></Wrapper>} path="chat/:placeId" />
                <Route element={<SignupPage />} path="register" />
                <Navigate to='register' />
            </Routes>
