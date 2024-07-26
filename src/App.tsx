@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import Layout from "./components/Layout";
+import React from "react";
 import PlacesListPage from "./pages/PlacesListPage";
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import ChatPage from "./pages/ChatPage";
 
 
 function App() {
   return (
     <div className="App">
-      <Layout>
-          <PlacesListPage />
-      </Layout>
+          <BrowserRouter>
+           <Routes>
+               <Route element={<PlacesListPage /> }  path="places"/>
+               <Route element={<ChatPage />} path="chat/:placeId" />
+               <Navigate to='places' />
+           </Routes>
+          </BrowserRouter>
     </div>
   );
 }

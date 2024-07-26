@@ -4,6 +4,8 @@ import SearchComponent from "../components/SearchComponent";
 import data from "../placesData.json";
 import PlacesTable from "../components/PlacesTable";
 import { Grid } from "@material-ui/core";
+import Layout from "../components/Layout";
+
 
 const PlacesListPage = () => {
   const [finalSearchTerm, setFinalSearchTerm] = useState<string>("");
@@ -42,6 +44,7 @@ const PlacesListPage = () => {
 
   return (
     <div>
+      <Layout>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <SearchComponent onSearch={handleSearch} />
@@ -50,6 +53,7 @@ const PlacesListPage = () => {
           {placesData.length > 0 && <PlacesTable data={placesData} />}
         </Grid>
       </Grid>
+      </Layout>
     </div>
   );
 };

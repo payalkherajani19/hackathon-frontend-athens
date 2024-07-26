@@ -29,7 +29,7 @@ const Header = () => {
        <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            My Application
+             Lead Gen - Athens
           </Typography>
         </Toolbar>
       </AppBar>

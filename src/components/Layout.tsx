@@ -54,11 +54,7 @@ const Layout = (props: Props) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Container>
-          <Typography variant="h1">Welcome to My Application</Typography>
-          <Typography variant="body1">
-            This is a basic layout using Material-UI version 4 in a React 17
-            application.
-          </Typography>
+          <Typography variant="h1">Lead Generation</Typography>
           { children && (<Box className="children">{children}</Box>)} 
         </Container>
       </main>

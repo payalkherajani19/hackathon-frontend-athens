@@ -5,13 +5,37 @@ import {
   ListItemText,
 } from "@material-ui/core";
 
+import { useNavigate } from 'react-router-dom'
+
+const listItems = [
+  {
+    itemName: 'Google Places',
+    path: '/places'
+  },
+  {
+    itemName: 'GPT Talks',
+    path: '/chat/ChIJ6VWov4Q2w4ARCBJMVH9oDxA'
+  },
+  {
+    itemName: 'Landing Page',
+    path: '/landingpage'
+  }
+]
 const SidebarCommonList = () => {
-  return (
+
+  const navigate = useNavigate()
+
+  const handleChangeRoute = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, path: string) => {
+     navigate(path)
+  }
+
+
+  return ( 
     <div>
-              <List>
-          {["Item 1", "Item 2", "Item 3"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
+        <List>
+          {listItems.map((item, index) => (
+            <ListItem button key={index} onClick={(e) => handleChangeRoute(e, item.path)}>
+              <ListItemText primary={item.itemName}  />
             </ListItem>
           ))}
         </List>

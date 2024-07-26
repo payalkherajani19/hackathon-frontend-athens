@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {Button} from '@material-ui/core'
+import { useNavigate } from 'react-router-dom'
 
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
@@ -41,7 +43,13 @@ interface Props {
 }
 const PlacesTable = (props: Props) => {
     const { data } = props
-  const classes = useStyles();
+    const classes = useStyles();
+    const navigate = useNavigate()
+
+  const handleEnrich = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, placeId: string) => {
+      e.preventDefault()
+      navigate(`/chat/${placeId}`)
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -53,6 +61,7 @@ const PlacesTable = (props: Props) => {
             <StyledTableCell>Phone Number</StyledTableCell>
             <StyledTableCell>Rating</StyledTableCell>
             <StyledTableCell>Website URL</StyledTableCell>
+            <StyledTableCell>Actions</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -66,6 +75,9 @@ const PlacesTable = (props: Props) => {
               <StyledTableCell>{singlePlaceData.rating}</StyledTableCell>
               <StyledTableCell>
                 <a href={`${singlePlaceData.website}`} target="_blank" rel="noopener noreferrer">Link</a>
+              </StyledTableCell>
+              <StyledTableCell>
+                 <Button variant='outlined' onClick={(e) => handleEnrich(e,singlePlaceData.place_id )}>Enrich</Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
