@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchComponent from "../components/SearchComponent";
-import data from "../placesData.json";
+import data from "../data.json";
 import PlacesTable from "../components/PlacesTable";
 import { Grid } from "@material-ui/core";
 import Layout from "../components/Layout";
@@ -14,7 +14,7 @@ const PlacesListPage = () => {
     if (finalSearchTerm) {
       try {
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos/1"
+          "https://jsonplaceholder.typicode.com/todos/2"
         );
         // await getJson({
         //     engine: "google_maps",
@@ -23,7 +23,7 @@ const PlacesListPage = () => {
         //     api_key:'5ce23d4a414d18c84d3efef573b16b0f3792005f60c19cd93fc94cdfce5bb6bc',
         //     q: finalSearchTerm
         //   }).then((output: any) => console.log(output));
-        setPlacesData(data.data);
+        setPlacesData(data.placesData);
       } catch (error) {
         console.log(error);
       }

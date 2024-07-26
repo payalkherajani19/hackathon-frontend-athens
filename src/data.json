@@ -1,5 +1,5 @@
 {
-    "data": [
+    "placesData": [
         {
         "position":
         1,
@@ -762,6 +762,16 @@
         "https://www.anytimefitness.com/gyms/4906/santa-cruz-ca-95060/?utm_source=google&utm_medium=organic-businesslisting&utm_campaign=gbp-listing&utm_content=4906",
         "thumbnail":
         "https://lh5.googleusercontent.com/p/AF1QipPJVjKyESnZ8ZkFfojVq0YkXXwExc4A48qvFdOZ=w122-h92-k-no"
+        }
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "name": "Project Name 1"
+        },
+        {
+            "id": 2,
+            "name": "Project Name 2"
         }
     ]
 }

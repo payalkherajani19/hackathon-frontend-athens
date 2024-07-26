@@ -9,6 +9,10 @@ import { useNavigate } from 'react-router-dom'
 
 const listItems = [
   {
+    itemName: 'Projects',
+    path: '/projects'
+  },
+  {
     itemName: 'Google Places',
     path: '/places'
   },
@@ -16,10 +20,7 @@ const listItems = [
     itemName: 'GPT Talks',
     path: '/chat/ChIJ6VWov4Q2w4ARCBJMVH9oDxA'
   },
-  {
-    itemName: 'Landing Page',
-    path: '/landingpage'
-  }
+ 
 ]
 const SidebarCommonList = () => {
 
