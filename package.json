@@ -10,6 +10,7 @@
     "@material-ui/styles": "4.11.4",
     "@material-ui/system": "^4.12.1",
     "@material-ui/x-grid": "^4.0.0-alpha.37",
+    "@react-oauth/google": "^0.12.1",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
