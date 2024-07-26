@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
   }));
 
-  
 const Header = () => {
     const classes = useStyles()
   return (

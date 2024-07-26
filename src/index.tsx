@@ -9,7 +9,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#3f51b5",
+      main: "#000",
     },
     secondary: {
       main: "#f50057",

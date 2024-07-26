@@ -1,0 +1,767 @@
+{
+    "data": [
+        {
+        "position":
+        1,
+        "title":
+        "Chuze Fitness",
+        "place_id":
+        "ChIJ6VWov4Q2w4ARCBJMVH9oDxA",
+        "data_id":
+        "0x80c33684bfa855e9:0x100f687f544c1208",
+        "data_cid":
+        "1157258525341913608",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80c33684bfa855e9%3A0x100f687f544c1208&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80c33684bfa855e9%3A0x100f687f544c1208&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.1082572,
+        "longitude":
+        -117.60697169999999
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJ6VWov4Q2w4ARCBJMVH9oDxA",
+        "provider_id":
+        "/g/11bxfrkhg5",
+        "rating":
+        4.6,
+        "reviews":
+        992,
+        "type":
+        "Fitness center",
+        "types":
+        [
+        "Fitness center",
+        "Gym",
+        "Indoor swimming pool"
+        ],
+        "type_id":
+        "fitness_center",
+        "type_ids":
+        [
+        "fitness_center",
+        "gym",
+        "indoor_swimming_pool"
+        ],
+        "address":
+        "9080 Foothill Blvd, Rancho Cucamonga, CA 91730",
+        "open_state":
+        "Open ⋅ Closes 12 AM",
+        "hours":
+        "Open ⋅ Closes 12 AM",
+        "operating_hours":
+        {
+        "thursday":
+        "4 AM–12 AM",
+        "friday":
+        "4 AM–10 PM",
+        "saturday":
+        "6 AM–8 PM",
+        "sunday":
+        "6 AM–8 PM",
+        "monday":
+        "4 AM–12 AM",
+        "tuesday":
+        "4 AM–12 AM",
+        "wednesday":
+        "4 AM–12 AM"
+        },
+        "phone":
+        "(909) 256-0787",
+        "website":
+        "https://chuzefitness.com/gym-locations/ca/rancho-cucamonga/",
+        "user_review":
+        "One of the best fitness centers in the world actually.",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipO2C-o9Ufomx8fCnJbhZNihl2tM6aPkMhk5Duo_=w138-h92-k-no"
+        },
+        {
+        "position":
+        2,
+        "title":
+        "In-Shape Family Fitness",
+        "place_id":
+        "ChIJBxynQLnImoARziNupxeMPDQ",
+        "data_id":
+        "0x809ac8b940a71c07:0x343c8c17a76e23ce",
+        "data_cid":
+        "3764037421796041678",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x809ac8b940a71c07%3A0x343c8c17a76e23ce&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x809ac8b940a71c07%3A0x343c8c17a76e23ce&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        38.4283856,
+        "longitude":
+        -121.4643749
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJBxynQLnImoARziNupxeMPDQ",
+        "provider_id":
+        "/g/1td42r72",
+        "rating":
+        4.3,
+        "reviews":
+        368,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym",
+        "Fitness center",
+        "Physical fitness program",
+        "Pilates studio",
+        "Sauna",
+        "Spa and health club",
+        "Weightlifting area",
+        "Yoga studio"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym",
+        "fitness_center",
+        "physical_fitness_program",
+        "pilates_studio",
+        "sauna",
+        "spa_and_health_club",
+        "weightlifting_area",
+        "yoga_studio"
+        ],
+        "address":
+        "3443 Laguna Blvd, Elk Grove, CA 95758",
+        "open_state":
+        "Open ⋅ Closes 11 PM",
+        "hours":
+        "Open ⋅ Closes 11 PM",
+        "operating_hours":
+        {
+        "thursday":
+        "4 AM–11 PM",
+        "friday":
+        "4 AM–9 PM",
+        "saturday":
+        "6 AM–8 PM",
+        "sunday":
+        "6 AM–8 PM",
+        "monday":
+        "4 AM–11 PM",
+        "tuesday":
+        "4 AM–11 PM",
+        "wednesday":
+        "4 AM–11 PM"
+        },
+        "phone":
+        "(916) 233-1300",
+        "website":
+        "https://www.inshape.com/gyms/laguna?utm_source=G&utm_medium=Local&utm_campaign=Google-Local&utm_source=G&utm_medium=Local&utm_campaign=Google-Local",
+        "user_review":
+        "The club has been great in ...",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipNQRKdglTJGg0djT-h8XHcZnVYkUSY3OucMvV54=w175-h92-k-no"
+        },
+        {
+        "position":
+        3,
+        "title":
+        "AF4157-Gridley,CA",
+        "place_id":
+        "ChIJxyrkyItNg4ARmRfWmXHSBIY",
+        "data_id":
+        "0x80834d8bc8e42ac7:0x8604d27199d61799",
+        "data_cid":
+        "9657074886343268249",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80834d8bc8e42ac7%3A0x8604d27199d61799&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80834d8bc8e42ac7%3A0x8604d27199d61799&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        39.3617043,
+        "longitude":
+        -121.68663149999999
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJxyrkyItNg4ARmRfWmXHSBIY",
+        "provider_id":
+        "/g/11k1c8j3ky",
+        "rating":
+        4.9,
+        "reviews":
+        476,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym"
+        ],
+        "address":
+        "1554 CA-99, Gridley, CA 95948",
+        "open_state":
+        "Open 24 hours",
+        "hours":
+        "Open 24 hours",
+        "operating_hours":
+        {
+        "thursday":
+        "Open 24 hours",
+        "friday":
+        "Open 24 hours",
+        "saturday":
+        "Open 24 hours",
+        "sunday":
+        "Closed",
+        "monday":
+        "Open 24 hours",
+        "tuesday":
+        "Open 24 hours",
+        "wednesday":
+        "Open 24 hours"
+        },
+        "phone":
+        "(530) 797-9080",
+        "website":
+        "https://www.anytimefitness.com/gyms/4157/gridley-ca-95948/?utm_source=google&utm_medium=organic-businesslisting&utm_campaign=gbp-listing&utm_content=4157",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipM2Acp6F0YoOH2JVDgLdA9GaKr7JolnO77H0qYe=w122-h92-k-no"
+        },
+        {
+        "position":
+        4,
+        "title":
+        "Mission Fitness Center",
+        "place_id":
+        "ChIJF9vQipTEwoARR5v2DbyTVOc",
+        "data_id":
+        "0x80c2c4948ad0db17:0xe75493bc0df69b47",
+        "data_cid":
+        "16669110556702448455",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c4948ad0db17%3A0xe75493bc0df69b47&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c4948ad0db17%3A0xe75493bc0df69b47&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.0831477,
+        "longitude":
+        -118.1477434
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJF9vQipTEwoARR5v2DbyTVOc",
+        "provider_id":
+        "/g/119t72tlq",
+        "rating":
+        4.7,
+        "reviews":
+        74,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym"
+        ],
+        "address":
+        "690 Date Ave, Alhambra, CA 91803",
+        "open_state":
+        "Open ⋅ Closes 12 AM",
+        "hours":
+        "Open ⋅ Closes 12 AM",
+        "operating_hours":
+        {
+        "thursday":
+        "5 AM–12 AM",
+        "friday":
+        "5 AM–12 AM",
+        "saturday":
+        "5 AM–12 AM",
+        "sunday":
+        "5 AM–12 AM",
+        "monday":
+        "5 AM–12 AM",
+        "tuesday":
+        "5 AM–12 AM",
+        "wednesday":
+        "5 AM–12 AM"
+        },
+        "phone":
+        "(626) 766-1225",
+        "website":
+        "https://www.missionfitnesscenter.com/",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipPwU4P_sAh1a5Su649VSFP0rok9QmXCRcsaFinJ=w122-h92-k-no"
+        },
+        {
+        "position":
+        5,
+        "title":
+        "Speakeasy Fitness - Los Angeles",
+        "place_id":
+        "ChIJmwUIDW3HwoARDRn-O_f2yJA",
+        "data_id":
+        "0x80c2c76d0d08059b:0x90c8f6f73bfe190d",
+        "data_cid":
+        "10432860078527617293",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c76d0d08059b%3A0x90c8f6f73bfe190d&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c76d0d08059b%3A0x90c8f6f73bfe190d&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.043171699999995,
+        "longitude":
+        -118.30993459999999
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJmwUIDW3HwoARDRn-O_f2yJA",
+        "provider_id":
+        "/g/11n5t0pww5",
+        "rating":
+        4.4,
+        "reviews":
+        673,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym"
+        ],
+        "address":
+        "1645 S Western Ave, Los Angeles, CA 90006",
+        "open_state":
+        "Open ⋅ Closes 12 AM",
+        "hours":
+        "Open ⋅ Closes 12 AM",
+        "operating_hours":
+        {
+        "thursday":
+        "5 AM–12 AM",
+        "friday":
+        "5 AM–9 PM",
+        "saturday":
+        "7 AM–8 PM",
+        "sunday":
+        "7 AM–8 PM",
+        "monday":
+        "5 AM–12 AM",
+        "tuesday":
+        "5 AM–12 AM",
+        "wednesday":
+        "5 AM–12 AM"
+        },
+        "phone":
+        "(818) 793-5495",
+        "website":
+        "http://speakeasy-fitness.com/",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipMUba8i27XKb28Q1r77XdaPDU2Vuumo28tkKyMo=w138-h92-k-no"
+        },
+        {
+        "position":
+        6,
+        "title":
+        "24 Hour Fitness",
+        "place_id":
+        "ChIJY1NpG4as3IARuTWr6tNNUOo",
+        "data_id":
+        "0x80dcac861b695363:0xea504dd3eaab35b9",
+        "data_cid":
+        "16884080575582516665",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80dcac861b695363%3A0xea504dd3eaab35b9&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80dcac861b695363%3A0xea504dd3eaab35b9&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.0648962,
+        "longitude":
+        -117.2662555
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJY1NpG4as3IARuTWr6tNNUOo",
+        "provider_id":
+        "/g/1tlw9cdz",
+        "rating":
+        3.8,
+        "reviews":
+        308,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym",
+        "Fitness center",
+        "Indoor cycling",
+        "Indoor swimming pool",
+        "Personal trainer",
+        "Sauna",
+        "Training centre",
+        "Yoga studio"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym",
+        "fitness_center",
+        "indoor_cycling",
+        "indoor_swimming_pool",
+        "personal_trainer",
+        "sauna",
+        "training_center",
+        "yoga_studio"
+        ],
+        "address":
+        "897 Harriman Pl, San Bernardino, CA 92408",
+        "open_state":
+        "Open 24 hours",
+        "hours":
+        "Open 24 hours",
+        "operating_hours":
+        {
+        "thursday":
+        "Open 24 hours",
+        "friday":
+        "12 AM–9 PM",
+        "saturday":
+        "5 AM–9 PM",
+        "sunday":
+        "5 AM–9 PM",
+        "monday":
+        "5 AM–12 AM",
+        "tuesday":
+        "Open 24 hours",
+        "wednesday":
+        "Open 24 hours"
+        },
+        "phone":
+        "(909) 521-3849",
+        "website":
+        "https://www.24hourfitness.com/gyms/san-bernardino-ca/san-bernardino-super-sport?Adb_id=GGL_LOC_ACQ_CDP",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipNk0J7pGEsJ3NptbABFeKmStqXIYSnfehk4MO9Q=w122-h92-k-no"
+        },
+        {
+        "position":
+        7,
+        "title":
+        "24 Hour Fitness",
+        "place_id":
+        "ChIJk71UQyCcwoARq38e17xDDrI",
+        "data_id":
+        "0x80c29c204354bd93:0xb20e43bcd71e7fab",
+        "data_cid":
+        "12830266866767134635",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80c29c204354bd93%3A0xb20e43bcd71e7fab&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80c29c204354bd93%3A0xb20e43bcd71e7fab&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.1834077,
+        "longitude":
+        -118.60502989999999
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJk71UQyCcwoARq38e17xDDrI",
+        "provider_id":
+        "/g/11bwm5_rvz",
+        "rating":
+        3.2,
+        "reviews":
+        352,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym",
+        "Fitness center",
+        "Indoor cycling",
+        "Indoor swimming pool",
+        "Personal trainer",
+        "Sauna",
+        "Training centre",
+        "Yoga studio"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym",
+        "fitness_center",
+        "indoor_cycling",
+        "indoor_swimming_pool",
+        "personal_trainer",
+        "sauna",
+        "training_center",
+        "yoga_studio"
+        ],
+        "address":
+        "6220 CA-27 Suite 2410, Woodland Hills, CA 91367",
+        "open_state":
+        "Open 24 hours",
+        "hours":
+        "Open 24 hours",
+        "operating_hours":
+        {
+        "thursday":
+        "Open 24 hours",
+        "friday":
+        "Open 24 hours",
+        "saturday":
+        "Open 24 hours",
+        "sunday":
+        "Open 24 hours",
+        "monday":
+        "Open 24 hours",
+        "tuesday":
+        "Open 24 hours",
+        "wednesday":
+        "Open 24 hours"
+        },
+        "phone":
+        "(818) 737-1177",
+        "website":
+        "https://www.24hourfitness.com/gyms/woodland-hills-ca/woodland-hills-super-sport?Adb_id=GGL_LOC_ACQ_CDP",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipMhpWpPExZSlXQM9hVU4HDA0Lt4JzxWLBV4p715=w122-h92-k-no"
+        },
+        {
+        "position":
+        8,
+        "title":
+        "Sanctuary Fitness - DTLA",
+        "place_id":
+        "ChIJX_JxhUDGwoARp058iyHRPbQ",
+        "data_id":
+        "0x80c2c6408571f25f:0xb43dd1218b7c4ea7",
+        "data_cid":
+        "12987766842410684071",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c6408571f25f%3A0xb43dd1218b7c4ea7&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c6408571f25f%3A0xb43dd1218b7c4ea7&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.0506056,
+        "longitude":
+        -118.2328417
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJX_JxhUDGwoARp058iyHRPbQ",
+        "provider_id":
+        "/g/11cs32670g",
+        "rating":
+        4.9,
+        "reviews":
+        216,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym"
+        ],
+        "address":
+        "718 Jackson St, Los Angeles, CA 90012",
+        "open_state":
+        "Open ⋅ Closes 7 PM",
+        "hours":
+        "Open ⋅ Closes 7 PM",
+        "operating_hours":
+        {
+        "thursday":
+        "6 AM–7 PM",
+        "friday":
+        "6 AM–7 PM",
+        "saturday":
+        "9 AM–12 PM",
+        "sunday":
+        "9–11 AM",
+        "monday":
+        "6 AM–7 PM",
+        "tuesday":
+        "6 AM–7 PM",
+        "wednesday":
+        "6 AM–7 PM"
+        },
+        "phone":
+        "(213) 266-8311",
+        "website":
+        "http://sanctuaryfitness.com/",
+        "description":
+        "Studio for HIIT & cycling classes. Fitness studio offering HIIT classes & cycling classes on customized bikes with tracking technology.",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipP1RJ5Ssu4_TTg8ak9tpW9PfjWHn6fI7KQe8XML=w122-h92-k-no"
+        },
+        {
+        "position":
+        9,
+        "title":
+        "USC Village Fitness Center",
+        "place_id":
+        "ChIJ3c8EEeXHwoARMO6wkbhT6oQ",
+        "data_id":
+        "0x80c2c7e51104cfdd:0x84ea53b891b0ee30",
+        "data_cid":
+        "9577559609740160560",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c7e51104cfdd%3A0x84ea53b891b0ee30&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x80c2c7e51104cfdd%3A0x84ea53b891b0ee30&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        34.0248425,
+        "longitude":
+        -118.2859507
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJ3c8EEeXHwoARMO6wkbhT6oQ",
+        "provider_id":
+        "/g/11fy96hj_h",
+        "rating":
+        4.7,
+        "reviews":
+        211,
+        "price":
+        "$$",
+        "unclaimed_listing":
+        true,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym"
+        ],
+        "address":
+        "929-959 W Jefferson Blvd, Los Angeles, CA 90007",
+        "open_state":
+        "Open ⋅ Closes 9 PM",
+        "hours":
+        "Open ⋅ Closes 9 PM",
+        "operating_hours":
+        {
+        "thursday":
+        "12–9 PM",
+        "friday":
+        "12–9 PM",
+        "saturday":
+        "1–9 PM",
+        "sunday":
+        "1–9 PM",
+        "monday":
+        "12–9 PM",
+        "tuesday":
+        "12–9 PM",
+        "wednesday":
+        "12–9 PM"
+        },
+        "phone":
+        "(213) 764-7940",
+        "website":
+        "https://recsports.usc.edu/rec-facilities/main-facilities/usc-village-fitness-center/",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipO65x5552fOkPkpTT7mypOh8wHTikDoDCzRuBhy=w122-h92-k-no"
+        },
+        {
+        "position":
+        10,
+        "title":
+        "Anytime Fitness",
+        "place_id":
+        "ChIJt1oNi45rjoARHApXBTiSH_Y",
+        "data_id":
+        "0x808e6b8e8b0d5ab7:0xf61f923805570a1c",
+        "data_cid":
+        "17735054626913716764",
+        "reviews_link":
+        "https://serpapi.com/search.json?data_id=0x808e6b8e8b0d5ab7%3A0xf61f923805570a1c&engine=google_maps_reviews&hl=en",
+        "photos_link":
+        "https://serpapi.com/search.json?data_id=0x808e6b8e8b0d5ab7%3A0xf61f923805570a1c&engine=google_maps_photos&hl=en",
+        "gps_coordinates":
+        {
+        "latitude":
+        36.9657854,
+        "longitude":
+        -122.0413597
+        },
+        "place_id_search":
+        "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJt1oNi45rjoARHApXBTiSH_Y",
+        "provider_id":
+        "/g/11syzcj5pg",
+        "rating":
+        4.9,
+        "reviews":
+        565,
+        "type":
+        "Gym",
+        "types":
+        [
+        "Gym",
+        "Fitness center",
+        "Personal trainer",
+        "Physical fitness program"
+        ],
+        "type_id":
+        "gym",
+        "type_ids":
+        [
+        "gym",
+        "fitness_center",
+        "personal_trainer",
+        "physical_fitness_program"
+        ],
+        "address":
+        "1640 Mission St, Santa Cruz, CA 95060",
+        "open_state":
+        "Open now",
+        "phone":
+        "(831) 777-3999",
+        "website":
+        "https://www.anytimefitness.com/gyms/4906/santa-cruz-ca-95060/?utm_source=google&utm_medium=organic-businesslisting&utm_campaign=gbp-listing&utm_content=4906",
+        "thumbnail":
+        "https://lh5.googleusercontent.com/p/AF1QipPJVjKyESnZ8ZkFfojVq0YkXXwExc4A48qvFdOZ=w122-h92-k-no"
+        }
+    ]
+}
