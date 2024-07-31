@@ -31,14 +31,16 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
+    height: 'max-content'
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     textAlign: "center",
     color: theme.palette.text.secondary,
     position: "relative",
     display: "flex",
     alignItems: "center",
+    marginTop: theme.spacing(1)
   },
   button: {
     position: "absolute",
@@ -77,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
   updateBtn: {
     margin: "auto",
     cursor: "pointer",
+    marginTop: theme.spacing(1)
   },
 }));
 
@@ -145,9 +148,10 @@ const App: React.FC = () => {
           <Grid item xs={4} sm={4}>
             <Paper className={classes.paper}>xs=6 sm=3</Paper>
           </Grid>
+         
           <Grid item xs={6} sm={12}>
+            <span>Tags</span>
             <Paper className={classes.paper}>
-              <span>Tags</span>
               <Button
                 className={classes.button}
                 variant="contained"
@@ -158,8 +162,8 @@ const App: React.FC = () => {
             </Paper>
           </Grid>
           <Grid item xs={6} sm={12}>
+            <span>Summary of the Company</span>
             <Paper className={`${classes.paper} ${classes.summary}`}>
-              <span>Summary of the Company</span>
               <Button
                 className={classes.button}
                 variant="contained"
@@ -199,8 +203,8 @@ const App: React.FC = () => {
             </Paper>
           </Grid>
           <Grid item xs={6} sm={12}>
-            <Paper className={`${classes.paper} ${classes.about}`}>
-              <span>About</span>
+            <span>About</span>
+            <Paper className={`${classes.paper} ${classes.about}`}>  
               <Button
                 className={classes.button}
                 variant="contained"
@@ -211,13 +215,13 @@ const App: React.FC = () => {
             </Paper>
           </Grid>
           <Grid item xs={6} sm={12}>
-            <Paper className={`${classes.paper} ${classes.about}`}>
-              <span>Recent News</span>
+            <span>Recent News</span>
+            <Paper className={`${classes.paper} ${classes.about}`}> 
             </Paper>
           </Grid>
           <Grid item xs={6} sm={12}>
+            <span>Employers</span>
             <Paper className={`${classes.paper} ${classes.about}`}>
-              <span>Employers</span>
             </Paper>
           </Grid>
         </Grid>

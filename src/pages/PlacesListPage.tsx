@@ -15,9 +15,23 @@ const PlacesListPage = () => {
   const getListOfData = async () => {
     if (prompt) {
       try {
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos/2"
-        );
+        // const response = await axios.get(
+        //   `${process.env.REACT_APP_API_URL}`, {
+        //     params: {
+        //       test: '123'
+        //     }
+        //   }
+        // );
+        // console.log(response,"response")
+
+        // const response = await axios.get(
+        //   `${process.env.REACT_APP_API_URL}/api/leads/businessesFromPrompt`, {
+        //      params: {
+        //        prompt
+        //      }
+        //   }
+        // );
+        // console.log(response,"response")
         // await getJson({
         //     engine: "google_maps",
         //     type: "place",

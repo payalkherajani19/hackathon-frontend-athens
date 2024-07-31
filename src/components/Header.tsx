@@ -1,6 +1,6 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography, Container, Drawer, List, ListItem, ListItemText, makeStyles } from '@material-ui/core';
-
+import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core';
+import logo from '../assests/perspecto.jpeg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,10 +27,11 @@ const Header = () => {
     const classes = useStyles()
   return (
        <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar style={{ justifyContent: 'space-between'}}>
           <Typography variant="h6" noWrap>
-             Lead Gen - Athens
+            Perspecto.AI
           </Typography>
+          <img src={logo}  alt="logo" height={40} />
         </Toolbar>
       </AppBar>
   )
