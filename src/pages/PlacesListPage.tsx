@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SearchComponent from "../components/SearchComponent";
 import data from "../data.json";
 import PlacesTable from "../components/PlacesTable";
 import { Grid, Typography } from "@material-ui/core";
@@ -25,9 +24,9 @@ const PlacesListPage = () => {
         // console.log(response,"response")
 
         // const response = await axios.get(
-        //   `${process.env.REACT_APP_API_URL}/api/leads/businessesFromPrompt`, {
+        //   `${process.env.REACT_APP_API_URL}api/leads/businessesFromPrompt`, {
         //      params: {
-        //        prompt
+        //        prompt: btoa(prompt)
         //      }
         //   }
         // );

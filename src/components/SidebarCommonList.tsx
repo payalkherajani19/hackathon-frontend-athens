@@ -28,6 +28,10 @@ const SidebarCommonList = () => {
     navigate("/register");
   };
 
+  const handleClickItem = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, path: string) => {
+      navigate(path)
+  }
+
   return (
     <>
       <Box
@@ -85,7 +89,7 @@ const SidebarCommonList = () => {
             <Typography variant="body2">Brand</Typography>
           </ListItemText>
 
-          <ListItem>
+          <ListItem button={true} onClick={(e) => handleClickItem(e, '/brandvoice')}>
             <ListItemIcon>
               <SettingsVoiceIcon color="primary" />
             </ListItemIcon>

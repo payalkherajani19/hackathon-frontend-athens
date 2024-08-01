@@ -27,27 +27,25 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
-  button: {
-    position: "absolute",
-    right: theme.spacing(3),
-    bottom: theme.spacing(3),
-  },
 }));
 
-interface PromptProps {
-  prompt: string;
-  setPrompt: React.Dispatch<React.SetStateAction<string>>;
+interface ChatInputProps {
+  state: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+  messageForPlaceholder: string;
+  showButton?: boolean;
+  buttonLabel?: string;
 }
 
-const Prompt = (props: PromptProps) => {
-  const { prompt, setPrompt } = props;
+const ChatInput = (props: ChatInputProps) => {
+  const { state, setState, messageForPlaceholder, showButton, buttonLabel } =
+    props;
   const classes = useStyles();
   const [input, setInput] = useState<string>("");
 
   const handleGenerateOutput = () => {
-    // Your logic to generate output from input
-    setPrompt(`${input}`);
-  };
+     setState(input)
+  }
 
   return (
     <Container className={classes.root}>
@@ -57,33 +55,23 @@ const Prompt = (props: PromptProps) => {
           variant="outlined"
           multiline
           minRows={10}
-          placeholder="Find me leads in [industry-name], at [location]..."
+          placeholder={messageForPlaceholder}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <div className={classes.buttonContainer}>
+        {Boolean(showButton) && (
           <Button
             variant="contained"
             color="primary"
-            className={classes.button}
             onClick={handleGenerateOutput}
-            disabled={input === ''}
+            disabled={input === ""}
           >
-            Generate
+            {buttonLabel ?? "Generate"}
           </Button>
-        </div>
-        {prompt && (
-          <>
-            <div>This would find company name, reviews, ratings, type of industry, address, website, booking link, name of employees.</div>
-            <div style={{ marginTop: "20px" }}>
-              <strong>Prompt Given:</strong>
-              <p>Generated Output for: {prompt}</p>
-            </div>
-          </>
         )}
       </Paper>
     </Container>
   );
 };
 
-export default Prompt;
+export default ChatInput;
