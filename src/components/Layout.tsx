@@ -6,13 +6,13 @@ import {
   Drawer,
   makeStyles,
 } from "@material-ui/core";
-import Header from "./Header";
 import SidebarCommonList from "./SidebarCommonList";
 import useCustomContext from "../Hook";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    height: 'inherit'
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -28,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  toolbar: theme.mixins.toolbar,
+  toolbar: {
+    minHeight: '20'
+  }
 }));
 
 interface Props {
@@ -38,11 +40,9 @@ const Layout = (props: Props) => {
   const { children } = props;
 
   const classes = useStyles();
-  const { state } = useCustomContext()
 
   return (
     <div className={classes.root}>
-      <Header />
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -50,14 +50,13 @@ const Layout = (props: Props) => {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.toolbar} />
         <SidebarCommonList />
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
         <Container>
-          <Typography variant="h1">Welcome {state.user.name ?? ''}</Typography>
+          <>
           { children && (<Box className="children">{children}</Box>)} 
+          </>
         </Container>
       </main>
     </div>

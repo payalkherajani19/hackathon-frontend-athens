@@ -20,7 +20,6 @@ const Wrapper = (props: WrapperProps) => {
    const navigate = useNavigate()
 
    useEffect(() => {
-    console.log("checking empty user", state.user)
      if(Object.keys(state.user).length === 0){
          navigate('/register')
      }
@@ -36,7 +35,7 @@ const Wrapper = (props: WrapperProps) => {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ height: '100vh', boxSizing: 'border-box', padding: '16px'}}>
           <BrowserRouter>
            <Routes>
                <Route element={<Wrapper><ProjectPage /></Wrapper>} path="projects" />

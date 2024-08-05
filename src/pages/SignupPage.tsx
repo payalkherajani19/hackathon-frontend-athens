@@ -60,14 +60,13 @@ const App: React.FC = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const { state, setState } = useCustomContext()
-  console.log({ state })
 
   const handleSubmit = () => {
     navigate("/projects");
     setState({ ...state, user: {
       id: '1',
-      name: 'Payal Kherajani', 
-      email: 'payalkherajani@appointy.com'
+      name: 'Ameya', 
+      email: 'ameya@appointy.com'
     }})
   };
 
