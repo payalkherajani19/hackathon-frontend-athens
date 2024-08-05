@@ -48,11 +48,9 @@ const ProjectPage = () => {
   const [loading, setLoading] = useState(false)
   const { state, setState } = useCustomContext()
   const navigate = useNavigate()
-  console.log(state,"state g")
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
      e.preventDefault()
-     console.log({projectName})
     //  setLoading(true)
      //API CALL
   };
@@ -69,7 +67,7 @@ const ProjectPage = () => {
   }
 
   const handleNavigateToSingleProject = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, id: string) => {
-     navigate(`/project/${id}`)
+     navigate(`/places`)
   }
 
   useEffect(() => {

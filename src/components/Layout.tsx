@@ -7,7 +7,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import SidebarCommonList from "./SidebarCommonList";
-import useCustomContext from "../Hook";
+import Breadcrumbs from "./Breadcrumbs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,9 +36,14 @@ const useStyles = makeStyles((theme) => ({
 interface Props {
   children?: React.ReactElement;
 }
+
+const breadcrumbs = [
+  { name: 'Projects', link: '/projects' },
+  { name: 'Test Project', link: '/places' },
+];
+
 const Layout = (props: Props) => {
   const { children } = props;
-
   const classes = useStyles();
 
   return (
@@ -55,6 +60,7 @@ const Layout = (props: Props) => {
       <main className={classes.content}>
         <Container>
           <>
+           <Breadcrumbs breadcrumbs={breadcrumbs} />
           { children && (<Box className="children">{children}</Box>)} 
           </>
         </Container>

@@ -24,8 +24,8 @@ const StyledTableCell = withStyles((theme: Theme) =>
 const StyledTableRow = withStyles((theme: Theme) =>
   createStyles({
     root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
+      '&:hover': {
+        backgroundColor: '#E5E4E2', // Customize the hover color
       },
     },
   }),
@@ -45,9 +45,9 @@ const PlacesTable = (props: Props) => {
     const classes = useStyles();
     const navigate = useNavigate()
 
-  const handleEnrich = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, placeId: string) => {
+  const handleEnrich = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, dataId: string) => {
       e.preventDefault()
-      navigate(`/chat/${placeId}`)
+      navigate(`/chat/${dataId}`)
   }
 
   return (
@@ -56,40 +56,38 @@ const PlacesTable = (props: Props) => {
         <TableHead>
           <TableRow>
             <StyledTableCell>Fitness Center</StyledTableCell>
-            <StyledTableCell>Name of Employee</StyledTableCell>
-            <StyledTableCell>Booking Link</StyledTableCell>
+            <StyledTableCell>Booking</StyledTableCell>
             <StyledTableCell>Address</StyledTableCell>
             <StyledTableCell>Phone Number</StyledTableCell>
             <StyledTableCell>Rating</StyledTableCell>
-            <StyledTableCell>Website URL</StyledTableCell>
+            <StyledTableCell>Website</StyledTableCell>
             <StyledTableCell>Type of Industry</StyledTableCell>
-            {/* <StyledTableCell>Actions</StyledTableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((singlePlaceData) => (
-            <StyledTableRow key={singlePlaceData.data_id} onClick={(e) => handleEnrich(e,singlePlaceData.place_id )} style={{ cursor: 'pointer'}}>
+            <StyledTableRow key={singlePlaceData.data_id} onClick={(e) => handleEnrich(e,singlePlaceData.data_id )} style={{ cursor: 'pointer'}}>
               <StyledTableCell component="th" scope="row">
                 {singlePlaceData.title}
               </StyledTableCell>
               <StyledTableCell>
-                 {singlePlaceData?.employee ?? '-'}
-              </StyledTableCell>
-              <StyledTableCell>
-                {singlePlaceData?.booking_link ?? '-'}
+                 {
+                  singlePlaceData.book_online ? (
+                    <a href={singlePlaceData.book_online} target="_blank" rel="noopener noreferrer"  style={{ color: 'black'}}>Booking Link</a>
+                  ) : (
+                    <>Not Found</>
+                  )
+                 }
               </StyledTableCell>
               <StyledTableCell>{singlePlaceData.address}</StyledTableCell>
               <StyledTableCell>{singlePlaceData.phone}</StyledTableCell>
               <StyledTableCell>{singlePlaceData.rating}</StyledTableCell>
               <StyledTableCell>
-                <a href={`${singlePlaceData.website}`} target="_blank" rel="noopener noreferrer">Link</a>
+                <a href={`${singlePlaceData.website}`} target="_blank" rel="noopener noreferrer" style={{ color: 'black'}}>Link</a>
               </StyledTableCell>
               <StyledTableCell>
                  {singlePlaceData.type}
               </StyledTableCell>
-              {/* <StyledTableCell>
-                 <Button variant='outlined' onClick={(e) => handleEnrich(e,singlePlaceData.place_id )}>Enrich</Button>
-              </StyledTableCell> */}
             </StyledTableRow>
           ))}
         </TableBody>

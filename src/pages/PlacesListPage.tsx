@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import data from "../data.json";
 import PlacesTable from "../components/PlacesTable";
 import { Grid, Typography } from "@material-ui/core";
 import Layout from "../components/Layout";
@@ -14,31 +13,14 @@ const PlacesListPage = () => {
   const getListOfData = async () => {
     if (prompt) {
       try {
-        // const response = await axios.get(
-        //   `${process.env.REACT_APP_API_URL}`, {
-        //     params: {
-        //       test: '123'
-        //     }
-        //   }
-        // );
-        // console.log(response,"response")
-
-        // const response = await axios.get(
-        //   `${process.env.REACT_APP_API_URL}api/leads/businessesFromPrompt`, {
-        //      params: {
-        //        prompt: btoa(prompt)
-        //      }
-        //   }
-        // );
-        // console.log(response,"response")
-        // await getJson({
-        //     engine: "google_maps",
-        //     type: "place",
-        //     data: "%214m5%213m4%211s0x89c259a61c75684f%3A0x79d31adb123348d2%218m2%213d40.7457399%214d-73.9882272",
-        //     api_key:'5ce23d4a414d18c84d3efef573b16b0f3792005f60c19cd93fc94cdfce5bb6bc',
-        //     q: finalSearchTerm
-        //   }).then((output: any) => console.log(output));
-        setPlacesData(data.placesData);
+        const response = await axios.get(
+           `https://backend-athens.onrender.com/api/leads/businessesFromPrompt`, {
+             params: {
+               prompt: btoa(prompt)
+             }
+          }
+        );
+        setPlacesData(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -51,6 +33,7 @@ const PlacesListPage = () => {
     getListOfData();
   }, [prompt]);
 
+
   return (
     <div>
       <Layout>
@@ -60,7 +43,8 @@ const PlacesListPage = () => {
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Prompt prompt={prompt} setPrompt={setPrompt} />
+             {placesData.length === 0 && <Prompt prompt={prompt} setPrompt={setPrompt} />}
+             {placesData.length > 0 && <Typography variant="h6"><b>Results for: {prompt}</b></Typography>}
             </Grid>
             <Grid item xs={12}>
               {placesData.length > 0 && <PlacesTable data={placesData} />}

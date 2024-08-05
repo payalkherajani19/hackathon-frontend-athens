@@ -767,11 +767,11 @@
     "projects": [
         {
             "id": "1",
-            "name": "Project Name 1"
+            "name": "Test Project"
         },
         {
             "id": "2",
-            "name": "Project Name 2"
+            "name": "Test Project 2"
         }
     ],
     "email": [
