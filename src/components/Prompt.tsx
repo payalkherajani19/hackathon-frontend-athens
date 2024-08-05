@@ -5,6 +5,7 @@ import {
   Button,
   makeStyles,
   Paper,
+  Typography,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +27,6 @@ const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     display: "flex",
     justifyContent: "flex-end",
-  },
-  button: {
-    position: "absolute",
-    right: theme.spacing(3),
-    bottom: theme.spacing(3),
   },
 }));
 
@@ -61,20 +57,23 @@ const Prompt = (props: PromptProps) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
+        <Typography variant="body2">
+          This would find company name, reviews, ratings, type of industry,
+          address, website, booking link, name of employees.
+        </Typography>
+
         <div className={classes.buttonContainer}>
           <Button
             variant="contained"
             color="primary"
-            className={classes.button}
             onClick={handleGenerateOutput}
-            disabled={input === ''}
+            disabled={input === ""}
           >
             Generate
           </Button>
         </div>
         {prompt && (
           <>
-            <div>This would find company name, reviews, ratings, type of industry, address, website, booking link, name of employees.</div>
             <div style={{ marginTop: "20px" }}>
               <strong>Prompt Given:</strong>
               <p>Generated Output for: {prompt}</p>

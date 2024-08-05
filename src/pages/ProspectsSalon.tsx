@@ -145,7 +145,6 @@ const App: React.FC = () => {
     fetchDataBasedOnDataId();
   }, []);
 
-  console.log({ dataId, employeeId });
 
   return (
     <Layout>
@@ -250,7 +249,7 @@ const App: React.FC = () => {
                               }}
                               onClick={(e) => handleGenerate(e, emp?.id)}
                             >
-                              Generate
+                              Generate Email
                             </Button>
                           </TableCell>
                         </TableRow>

@@ -6,7 +6,8 @@ export const Context = React.createContext({} as any)
 const initialState = {
    user: {},
    usersProjects: [],
-   selectedProject: []
+   selectedProject: [],
+   themeColor: ''
 }
 
 interface Props {

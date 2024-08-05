@@ -85,7 +85,7 @@ const SidebarCommonList = () => {
           <List>
             <ListItem button>
               <ListItemIcon classes={{ root: classes.iconRoot }}>
-                <WorkOutlineOutlinedIcon color="primary" fontSize="small" />
+                <WorkOutlineOutlinedIcon color="primary" fontSize="small" style={{ color:state.themeColor }} />
               </ListItemIcon>
               <ListItemText
                 primary={"Project"}
@@ -99,7 +99,7 @@ const SidebarCommonList = () => {
             </ListItemText>
             <ListItem button>
               <ListItemIcon classes={{ root: classes.iconRoot }}>
-                <EmailOutlinedIcon color="primary" fontSize="small" />
+                <EmailOutlinedIcon color="primary" fontSize="small" style={{ color:state.themeColor }} />
               </ListItemIcon>
               <ListItemText
                 primary={"Email Templates"}
@@ -117,7 +117,7 @@ const SidebarCommonList = () => {
               onClick={(e) => handleClickItem(e, "/brandvoice")}
             >
               <ListItemIcon classes={{ root: classes.iconRoot }}>
-                <SettingsVoiceIcon color="primary" fontSize="small" />
+                <SettingsVoiceIcon color="primary" fontSize="small"  style={{ color:state.themeColor }} />
               </ListItemIcon>
               <ListItemText
                 primary={"Brand Voice"}
@@ -127,7 +127,7 @@ const SidebarCommonList = () => {
 
             <ListItem button>
               <ListItemIcon classes={{ root: classes.iconRoot }}>
-                <AttachmentIcon color="primary" fontSize="small" />
+                <AttachmentIcon color="primary" fontSize="small" style={{ color:state.themeColor }} />
               </ListItemIcon>
               <ListItemText
                 primary={"Brand Assets"}
@@ -137,15 +137,6 @@ const SidebarCommonList = () => {
           </List>
         </Box>
 
-        {/* <ListItem button onClick={handleLogout}>
-          <ListItemIcon classes={{ root: classes.iconRoot }}>
-            <ExitToAppIcon color="primary" fontSize="small" />
-          </ListItemIcon>
-          <ListItemText
-            primary={"Logout"}
-            classes={{ primary: classes.listItemText }}
-          />
-        </ListItem> */}
         <List component="nav" aria-label="Device settings">
           <ListItem
             button
@@ -155,7 +146,7 @@ const SidebarCommonList = () => {
             onClick={handleClickListItem}
           >
             <ListItemIcon classes={{ root: classes.iconRoot }}>
-              <SettingsOutlinedIcon color="primary" fontSize="small" />
+              <SettingsOutlinedIcon color="primary" fontSize="small" style={{ color:state.themeColor }} />
             </ListItemIcon>
             <ListItemText
               primary="Settings"

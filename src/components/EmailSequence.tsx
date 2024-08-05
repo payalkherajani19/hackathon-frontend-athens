@@ -8,12 +8,15 @@ import {
   Box,
   Typography,
   TextField,
+  Tabs,
+  Tab,
 } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import axios from "axios";
 import Spinner from "./Spinner";
+import useCustomContext from "../Hook";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = (themeColor: string) =>  makeStyles((theme) => ({
   slidingComponent: {
     position: "fixed",
     top: 0,
@@ -52,7 +55,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     alignSelf: "flex-end",
-    marginTop: '1rem'
+    marginTop: "1rem",
+    marginBottom: '1rem',
+    border: '1px solid black'
   },
   btnPaper: {
     padding: theme.spacing(2),
@@ -60,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     gap: "0.5rem",
+    paddingLeft: "0px",
   },
   button: {
     right: theme.spacing(2),
@@ -69,7 +75,36 @@ const useStyles = makeStyles((theme) => ({
     height: "max-content",
     textAlign: "left",
   },
+  indicator: {
+    backgroundColor: `${themeColor} !important`
+  }
 }));
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: any;
+  value: any;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
 const EmailSequence: React.FC<{
   visible: boolean;
@@ -77,12 +112,16 @@ const EmailSequence: React.FC<{
   dataId: string;
   employeeId: string;
 }> = ({ visible, onClose, dataId, employeeId }) => {
-  const classes = useStyles();
+  const { state } = useCustomContext()
+  const classes = useStyles(state.themeColor)();
+
   const [loading, setLoading] = useState(false);
-  const [emailInfo, setEmailInfo] = useState<any>({
+  const [allEmails, setAllEmails] = useState<any>([]);
+  const [currentEmailInfo, setCurrentEmailInfo] = useState<any>({
     body: "",
     subject: "",
   });
+  const [value, setValue] = React.useState(0);
   const contentEditableRef = useRef<any>(null);
 
   const generatePersonalizedEmail = async () => {
@@ -97,7 +136,8 @@ const EmailSequence: React.FC<{
           },
         }
       );
-      setEmailInfo(response.data);
+      setAllEmails(response.data);
+      setCurrentEmailInfo(response.data[0]);
     } catch (error) {
       console.error(error);
     } finally {
@@ -109,7 +149,7 @@ const EmailSequence: React.FC<{
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
     const { value } = e.target;
-    setEmailInfo({ ...emailInfo, subject: value });
+    setCurrentEmailInfo({ ...currentEmailInfo, subject: value });
   };
 
   useEffect(() => {
@@ -117,7 +157,15 @@ const EmailSequence: React.FC<{
   }, []);
 
   const handleBlur = (e: any) => {
-    setEmailInfo({ ...emailInfo, body: contentEditableRef?.current?.innerHTML });
+    setCurrentEmailInfo({
+      ...currentEmailInfo,
+      body: contentEditableRef?.current?.innerHTML,
+    });
+  };
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+    setCurrentEmailInfo(allEmails[newValue])
   };
 
   return (
@@ -126,15 +174,18 @@ const EmailSequence: React.FC<{
         visible ? classes.visible : ""
       }`}
     >
-      <div className={classes.root}>
+     
         {loading ? (
-          <Spinner />
+          <Box style={{ display: 'flex', alignItems: 'center', height: 'inherit', justifyContent: 'center', gap: '2rem'}}>
+          <Spinner message={`${state?.user?.name ?? "Ameya"} generating personalized email for you....`} />
+          </Box>
         ) : (
+          <div className={classes.root}>
           <div className={classes.mainContent} style={{ overflow: "auto" }}>
             <Grid container spacing={2} style={{ width: "100%" }}>
               <Grid item style={{ width: "100%" }}>
                 <Box className={classes.btnPaper}>
-                  <Typography variant="body1">
+                  <Typography variant="subtitle1">
                     <b>Hyper Personalized Email</b>
                   </Typography>
                   <IconButton
@@ -149,32 +200,49 @@ const EmailSequence: React.FC<{
                   ,
                 </Box>
               </Grid>
-              <Grid item xs={6} sm={12}>
-                <span>Email Subject</span>
-                <Paper className={classes.paper}>
-                  <TextField
-                    value={emailInfo?.subject}
-                    onChange={(e) => handleSubjectChange(e)}
-                    style={{ width: "100%" }}
-                  />
-                </Paper>
-              </Grid>
-              <Grid item xs={6} sm={12}>
-                <span>Email Body</span>
-                <Paper className={`${classes.emailBody} ${classes.paper}`}>
-                  <div
-                    contentEditable
-                    ref={contentEditableRef}
-                    dangerouslySetInnerHTML={{ __html: emailInfo?.body }}
-                    onBlur={handleBlur}
-                    style={{ border: "1px solid #ccc", padding: "10px" }}
-                  ></div>
-                </Paper>
-              </Grid>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="simple tabs example"
+                classes={{
+                  indicator: classes.indicator,
+                }}
+              >
+                {allEmails?.map((email: any) => {
+                  return <Tab label={email?.tone} />;
+                })}
+              </Tabs>
+              <TabPanel value={value} index={value}>
+                <Grid item xs={6} sm={12}>
+                  <span>Email Subject</span>
+                  <Paper className={classes.paper}>
+                    <TextField
+                      value={currentEmailInfo?.subject}
+                      onChange={(e) => handleSubjectChange(e)}
+                      style={{ width: "100%" }}
+                    />
+                  </Paper>
+                </Grid>
+                <Grid item xs={6} sm={12}>
+                  <span>Email Body</span>
+                  <Paper className={`${classes.emailBody} ${classes.paper}`}>
+                    <div
+                      contentEditable
+                      ref={contentEditableRef}
+                      dangerouslySetInnerHTML={{
+                        __html: currentEmailInfo?.body,
+                      }}
+                      onBlur={handleBlur}
+                      style={{ border: "1px solid #ccc", padding: "10px" }}
+                    ></div>
+                  </Paper>
+                </Grid>
+              </TabPanel>
             </Grid>
           </div>
+          </div>
         )}
-      </div>
+     
     </Paper>
   );
 };

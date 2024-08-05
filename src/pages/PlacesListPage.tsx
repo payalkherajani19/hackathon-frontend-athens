@@ -44,7 +44,7 @@ const PlacesListPage = () => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
              {placesData.length === 0 && <Prompt prompt={prompt} setPrompt={setPrompt} />}
-             {placesData.length > 0 && <Typography variant="h6"><b>Results for: {prompt}</b></Typography>}
+             {placesData.length > 0 && <Typography variant="h6"><b>Results for {placesData.length} {prompt}</b></Typography>}
             </Grid>
             <Grid item xs={12}>
               {placesData.length > 0 && <PlacesTable data={placesData} />}

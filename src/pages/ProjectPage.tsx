@@ -10,12 +10,14 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Paper
+  Paper,
+  Typography
 } from "@material-ui/core";
 import Spinner from "../components/Spinner";
 import data from '../data.json'
 import useCustomContext from "../Hook";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   projects: {
@@ -70,8 +72,23 @@ const ProjectPage = () => {
      navigate(`/places`)
   }
 
+  const getBrandColor = async() => {
+   try {
+      const response = await axios.get('https://backend-athens.onrender.com/api/projects/getPrimaryColour', {
+        params: {
+           user_email: state.user.email
+        }
+      })
+      setState({ ...state, themeColor: response.data.primary_colour })
+     
+   } catch (error) {
+    console.error(error)
+   }
+  }
+
   useEffect(() => {
      setState({ ...state, usersProjects: data.projects })
+     getBrandColor()
   },[])
 
   return (
@@ -83,7 +100,9 @@ const ProjectPage = () => {
           </Button>
         </Box>
         <Box className="list-of-projects">
-            <Box style={{ marginBottom: '2rem'}}>LIST OF PROJECTS</Box>
+            <Box style={{ marginBottom: '2rem'}}>
+              <Typography variant="h6">LIST OF PROJECTS</Typography>
+            </Box>
             <Grid container spacing={3}>
                   {
                     data.projects.map((project) => {

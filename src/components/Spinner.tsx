@@ -1,14 +1,18 @@
 import React, { FC } from 'react'
-import { SvgIcon, SvgIconProps } from '@material-ui/core'
+import { SvgIcon, SvgIconProps, Typography } from '@material-ui/core'
 
 export interface SpinnerProps extends SvgIconProps {
     size?: number
     thickness?: number
+    message?:string
 }
 
 const Spinner: FC<SpinnerProps> = ({ size, thickness, ...props }) => {
     return (
-        <SvgIcon
+        <>
+         { props?.message ? <Typography variant='subtitle1'>{props.message}</Typography> : null }
+
+         <SvgIcon
             viewBox="0 0 38 38"
             {...props}
             style={{ width: size, height: size, ...props.style }}
@@ -35,6 +39,8 @@ const Spinner: FC<SpinnerProps> = ({ size, thickness, ...props }) => {
                 </g>
             </g>
         </SvgIcon>
+        </>
+       
     )
 }
 
