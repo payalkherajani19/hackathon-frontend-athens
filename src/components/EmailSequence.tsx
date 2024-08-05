@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Paper,
   makeStyles,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateX(100%)",
     transition: "transform 0.3s ease-out",
     zIndex: 1200,
-    overflow: 'scroll'
+    overflow: "scroll",
   },
   visible: {
     transform: "translateX(0%)",
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(5),
     display: "flex",
     justifyContent: "space-between",
-    width: '100%',
+    width: "100%",
   },
   mainContent: {
     flex: 1,
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     alignSelf: "flex-end",
+    marginTop: '1rem'
   },
   btnPaper: {
     padding: theme.spacing(2),
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   },
   emailBody: {
     height: "max-content",
-    textAlign: 'left'
+    textAlign: "left",
   },
 }));
 
@@ -77,42 +78,47 @@ const EmailSequence: React.FC<{
   employeeId: string;
 }> = ({ visible, onClose, dataId, employeeId }) => {
   const classes = useStyles();
-  const [loading, setLoading] = useState(false)
-  const [emailInfo,setEmailInfo] = useState<any>({
-    body: '',
-    subject: ''
-  })
-  
-  const generatePersonalizedEmail = async() => {
-   try {
-       setLoading(true)
-       const response = await axios.get(
-        `https://backend-athens.onrender.com/api/email/generatePersonalized?`, {
+  const [loading, setLoading] = useState(false);
+  const [emailInfo, setEmailInfo] = useState<any>({
+    body: "",
+    subject: "",
+  });
+  const contentEditableRef = useRef<any>(null);
+
+  const generatePersonalizedEmail = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `https://backend-athens.onrender.com/api/email/generatePersonalized?`,
+        {
           params: {
             businessId: dataId,
-            employeeId: employeeId
-          }
-       }
-     );
-     setEmailInfo(response.data)
-   } catch (error) {
-     console.error(error)
-   }
-   finally{
-     setLoading(false)
-   }
-  }
+            employeeId: employeeId,
+          },
+        }
+      );
+      setEmailInfo(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const handleSubjectChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-      const { value } = e.target
-      setEmailInfo({ ...emailInfo, subject: value })
-  }
+  const handleSubjectChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    const { value } = e.target;
+    setEmailInfo({ ...emailInfo, subject: value });
+  };
 
   useEffect(() => {
-      generatePersonalizedEmail()
-  },[])
+    generatePersonalizedEmail();
+  }, []);
 
-  console.log({ emailInfo })
+  const handleBlur = (e: any) => {
+    setEmailInfo({ ...emailInfo, body: contentEditableRef?.current?.innerHTML });
+  };
 
   return (
     <Paper
@@ -121,38 +127,53 @@ const EmailSequence: React.FC<{
       }`}
     >
       <div className={classes.root}>
-        {
-          loading ? (<Spinner />) : (
-            <div className={classes.mainContent} style={{ overflow: 'auto'}}>
-            <Grid container spacing={2} style={{ width: '100%'}}>
-              <Grid item style={{ width: '100%'}}>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <div className={classes.mainContent} style={{ overflow: "auto" }}>
+            <Grid container spacing={2} style={{ width: "100%" }}>
+              <Grid item style={{ width: "100%" }}>
                 <Box className={classes.btnPaper}>
-                  <Typography variant="body1"><b>Hyper Personalized Email</b></Typography>
-                  <IconButton onClick={onClose} style={{  position: 'absolute', right: '50px' }}>
-                    <CancelIcon fontSize="large" style={{ cursor: "pointer" }} />
+                  <Typography variant="body1">
+                    <b>Hyper Personalized Email</b>
+                  </Typography>
+                  <IconButton
+                    onClick={onClose}
+                    style={{ position: "absolute", right: "50px" }}
+                  >
+                    <CancelIcon
+                      fontSize="large"
+                      style={{ cursor: "pointer" }}
+                    />
                   </IconButton>
                   ,
                 </Box>
               </Grid>
               <Grid item xs={6} sm={12}>
+                <span>Email Subject</span>
                 <Paper className={classes.paper}>
                   <TextField
                     value={emailInfo?.subject}
                     onChange={(e) => handleSubjectChange(e)}
-                    style={{ width: '100%'}}
+                    style={{ width: "100%" }}
                   />
                 </Paper>
               </Grid>
               <Grid item xs={6} sm={12}>
+                <span>Email Body</span>
                 <Paper className={`${classes.emailBody} ${classes.paper}`}>
-                <div dangerouslySetInnerHTML={{ __html: emailInfo?.body }} /> 
+                  <div
+                    contentEditable
+                    ref={contentEditableRef}
+                    dangerouslySetInnerHTML={{ __html: emailInfo?.body }}
+                    onBlur={handleBlur}
+                    style={{ border: "1px solid #ccc", padding: "10px" }}
+                  ></div>
                 </Paper>
               </Grid>
             </Grid>
           </div>
-          )
-        }
-
+        )}
       </div>
     </Paper>
   );
