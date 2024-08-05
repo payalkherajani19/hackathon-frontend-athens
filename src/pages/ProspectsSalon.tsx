@@ -102,58 +102,12 @@ const useStyles = makeStyles((theme) => ({
 const App: React.FC = () => {
   const classes = useStyles();
 
-  const [chipsArray, setChipsArray] = useState([
-    "About",
-    "News",
-    "Services",
-    "Industry",
-    "Trends",
-    "Employee",
-    "First Name",
-    "Last Name",
-    "Company Name",
-    "Detailed Experience",
-    "Current Job Title",
-    "Work History",
-    "Education",
-    "Location",
-    "LinkedIn Posts",
-    "JTBD",
-    "Hobbies",
-  ]);
-
   const [buisnessDetailInfo, setBuisnessDetailInfo] = useState<any>([]);
+  const [openEmailComponent, setOpenEmailComponent] = useState(false);
+  const [employeeId, setEmployeeId] = useState("");
   const [loading, setLoading] = useState(false);
 
   const { dataId } = useParams();
-
-  const [visibleComponent, setVisibleComponent] = useState<string | null>(null);
-
-  const handleMenuItemClick = (option: string) => {
-    setVisibleComponent(option);
-    handleClose();
-  };
-
-  const closeEmailSequence = () => {
-    setVisibleComponent(null);
-  };
-
-  const [generateMenu, setGenerateMenu] = useState([
-    { name: "Build Email Sequence", path: "/email-sequence" },
-    { name: "One Off Email", path: "/one-off-email" },
-    { name: "Short Message for Twitter", path: "/twitter-message" },
-    { name: "Icebreaker", path: "/icebreaker" },
-  ]);
-
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const fetchDataBasedOnDataId = async () => {
     try {
@@ -174,9 +128,24 @@ const App: React.FC = () => {
     }
   };
 
+  const handleGenerate = (
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    empId: string
+  ) => {
+    setOpenEmailComponent(true);
+    setEmployeeId(empId);
+  };
+
+  const handleClose = () => {
+    setOpenEmailComponent(false);
+    setEmployeeId("");
+  };
+
   useEffect(() => {
     fetchDataBasedOnDataId();
   }, []);
+
+  console.log({ dataId, employeeId });
 
   return (
     <Layout>
@@ -200,47 +169,6 @@ const App: React.FC = () => {
                   </Typography>
                 </Paper>
               </Grid>
-              {/* <Grid item xs={6} sm={12}>
-                <span>Summary of the Company</span>
-                <Paper className={`${classes.paper} ${classes.summary}`}>
-                  <Button
-                    className={classes.button}
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClick}
-                  >
-                    Generate
-                    <ArrowDropDownIcon />
-                  </Button>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                    PaperProps={{ className: classes.menuPaper }}
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "left",
-                    }}
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "left",
-                    }}
-                  >
-                    {generateMenu.map((item) => (
-                      <MenuItem
-                        key={item.path}
-                        onClick={() => handleMenuItemClick(item.path)}
-                      >
-                        {item.name}
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                    <EmailSequence
-                      visible={!!visibleComponent}
-                      onClose={closeEmailSequence}
-                    />
-                </Paper>
-              </Grid> */}
               <Grid item xs={6} sm={12}>
                 <span>About</span>
                 <Paper className={`${classes.paper} ${classes.about}`}>
@@ -275,7 +203,7 @@ const App: React.FC = () => {
                   style={{ height: "max-content", textAlign: "left" }}
                 >
                   <List>
-                    {buisnessDetailInfo?.services.map(
+                    {buisnessDetailInfo?.services?.map(
                       (s: string, index: number) => {
                         return (
                           <ListItemText>
@@ -300,7 +228,9 @@ const App: React.FC = () => {
                         <TableCell>
                           <b>Designation</b>
                         </TableCell>
-                        <TableCell><b>Action</b></TableCell>
+                        <TableCell>
+                          <b>Action</b>
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -318,13 +248,26 @@ const App: React.FC = () => {
                                 color: "white",
                                 cursor: "pointer",
                               }}
-                            >Generate</Button>
+                              onClick={(e) => handleGenerate(e, emp?.id)}
+                            >
+                              Generate
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
                   </Table>
                 </TableContainer>
+              </Grid>
+              <Grid item xs={6} sm={12}>
+                {openEmailComponent ? (
+                  <EmailSequence
+                    visible={openEmailComponent}
+                    onClose={handleClose}
+                    dataId={dataId}
+                    employeeId={employeeId}
+                  />
+                ) : null}
               </Grid>
             </Grid>
           </div>
