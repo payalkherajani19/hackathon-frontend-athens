@@ -56,7 +56,7 @@ const PlacesTable = (props: Props) => {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Fitness Center</StyledTableCell>
+            <StyledTableCell>Business Name</StyledTableCell>
             <StyledTableCell>Booking</StyledTableCell>
             <StyledTableCell>Address</StyledTableCell>
             <StyledTableCell>Phone Number</StyledTableCell>

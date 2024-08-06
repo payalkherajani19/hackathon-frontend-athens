@@ -181,7 +181,7 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                       <Typography variant="body1">
                         {buisnessDetailInfo?.address
                           ? buisnessDetailInfo?.address
-                          : "-"}
+                          : "Address not Found"}
                       </Typography>
                     </Paper>
                   </Grid>
@@ -189,7 +189,7 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                     <span>About</span>
                     <Paper className={`${classes.paper} ${classes.about}`}>
                       <Typography variant="body1" style={{ textAlign: "left" }}>
-                        {buisnessDetailInfo?.about}
+                        {buisnessDetailInfo?.about ?? 'About not found' }
                       </Typography>
                     </Paper>
                   </Grid>
@@ -198,7 +198,7 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                     <span>Website</span>
                     <Paper className={`${classes.paper}`}>
                       <Typography variant="body1" style={{ textAlign: "left" }}>
-                        {buisnessDetailInfo?.website}
+                        {buisnessDetailInfo?.website ?? 'Website URL not found'}
                       </Typography>
                     </Paper>
                   </Grid>
@@ -207,7 +207,7 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                     <span>Type</span>
                     <Paper className={`${classes.paper}`}>
                       <Typography variant="body1" style={{ textAlign: "left" }}>
-                        {buisnessDetailInfo?.type}
+                        {buisnessDetailInfo?.type ?? 'Buiness type not found'}
                       </Typography>
                     </Paper>
                   </Grid>
@@ -219,16 +219,23 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                       style={{ height: "max-content", textAlign: "left" }}
                     >
                       <List>
-                        {buisnessDetailInfo?.services?.map(
-                          (s: string, index: number) => {
-                            return (
-                              <ListItemText>
-                                {index + 1}
-                                {". "} {s}
-                              </ListItemText>
-                            );
-                          }
-                        )}
+                        {
+                          buisnessDetailInfo?.services?.length > 0 ? (
+                            buisnessDetailInfo?.services?.map(
+                              (s: string, index: number) => {
+                                return (
+                                  <ListItemText>
+                                    {index + 1}
+                                    {". "} {s}
+                                  </ListItemText>
+                                );
+                              }
+                            )
+                          ) : (
+                            <div>No Services Found</div>
+                          )
+                        }
+                        
                       </List>
                     </Paper>
                   </Grid>
@@ -253,29 +260,35 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                           </TableRow>
                         </TableHead>
                         <TableBody>
-                          {buisnessDetailInfo?.employeeDetails?.map(
-                            (emp: any) => (
-                              <TableRow key={emp.id}>
-                                <TableCell component="th" scope="row">
-                                  {emp?.name}
-                                </TableCell>
-                                <TableCell>{emp?.designation}</TableCell>
-                                <TableCell>
-                                  <Button
-                                    variant="contained"
-                                    color="primary"
-                                    style={{
-                                      color: "white",
-                                      cursor: "pointer",
-                                    }}
-                                    onClick={(e) => handleGenerate(e, emp?.id)}
-                                  >
-                                    Generate Email
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
+                          {
+                            buisnessDetailInfo?.employeeDetails?.length > 0 ? (
+                              buisnessDetailInfo?.employeeDetails?.map(
+                                (emp: any) => (
+                                  <TableRow key={emp.id}>
+                                    <TableCell component="th" scope="row">
+                                      {emp?.name}
+                                    </TableCell>
+                                    <TableCell>{emp?.designation}</TableCell>
+                                    <TableCell>
+                                      <Button
+                                        variant="contained"
+                                        color="primary"
+                                        style={{
+                                          color: "white",
+                                          cursor: "pointer",
+                                        }}
+                                        onClick={(e) => handleGenerate(e, emp?.id)}
+                                      >
+                                        Generate Email
+                                      </Button>
+                                    </TableCell>
+                                  </TableRow>
+                                )
+                              )
+                            )  : (
+                              <div>No Employees Found</div>
                             )
-                          )}
+                          }
                         </TableBody>
                       </Table>
                     </TableContainer>
@@ -293,7 +306,7 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
                 </>
               ) : (
                 <>
-                <Box style={{ display: "flex", alignItems: "center", flexDirection: 'column' }}>
+                <Box style={{ display: "flex", alignItems: "center" }}>
                     <IconButton
                       aria-label="go-back"
                       onClick={() => props?.handleGoBack()}
