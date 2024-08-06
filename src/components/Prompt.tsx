@@ -6,6 +6,7 @@ import {
   makeStyles,
   Paper,
   Typography,
+  Box,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,21 +34,24 @@ const useStyles = makeStyles((theme) => ({
 interface PromptProps {
   prompt: string;
   setPrompt: React.Dispatch<React.SetStateAction<string>>;
+  setOpenEdit: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Prompt = (props: PromptProps) => {
-  const { prompt, setPrompt } = props;
+  const { prompt, setPrompt, setOpenEdit } = props;
   const classes = useStyles();
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>(props.prompt);
 
   const handleGenerateOutput = () => {
     // Your logic to generate output from input
     setPrompt(`${input}`);
+    setOpenEdit(false)
   };
 
   return (
     <Container className={classes.root}>
       <Paper className={classes.paper}>
+        <Box style={{ marginBottom: '1rem'}}> <Typography variant="h6"><b>Get Started with Perspecto</b></Typography> </Box>
         <TextField
           className={classes.textarea}
           variant="outlined"

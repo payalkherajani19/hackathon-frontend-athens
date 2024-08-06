@@ -16,69 +16,70 @@ import axios from "axios";
 import Spinner from "./Spinner";
 import useCustomContext from "../Hook";
 
-const useStyles = (themeColor: string) =>  makeStyles((theme) => ({
-  slidingComponent: {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    height: "100vh",
-    width: "50%",
-    transform: "translateX(100%)",
-    transition: "transform 0.3s ease-out",
-    zIndex: 1200,
-    overflow: "scroll",
-  },
-  visible: {
-    transform: "translateX(0%)",
-  },
-  closeButton: {
-    position: "absolute",
-    top: theme.spacing(1),
-    right: theme.spacing(1),
-  },
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(5),
-    display: "flex",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  mainContent: {
-    flex: 1,
-    padding: theme.spacing(2),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-    position: "relative",
-    display: "flex",
-    alignItems: "center",
-    alignSelf: "flex-end",
-    marginTop: "1rem",
-    marginBottom: '1rem',
-    border: '1px solid black'
-  },
-  btnPaper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "0.5rem",
-    paddingLeft: "0px",
-  },
-  button: {
-    right: theme.spacing(2),
-    cursor: "pointer",
-  },
-  emailBody: {
-    height: "max-content",
-    textAlign: "left",
-  },
-  indicator: {
-    backgroundColor: `${themeColor} !important`
-  }
-}));
+const useStyles = (themeColor: string) =>
+  makeStyles((theme) => ({
+    slidingComponent: {
+      position: "fixed",
+      top: 0,
+      right: 0,
+      height: "100vh",
+      width: "50%",
+      transform: "translateX(100%)",
+      transition: "transform 0.3s ease-out",
+      zIndex: 1200,
+      overflow: "scroll",
+    },
+    visible: {
+      transform: "translateX(0%)",
+    },
+    closeButton: {
+      position: "absolute",
+      top: theme.spacing(1),
+      right: theme.spacing(1),
+    },
+    root: {
+      flexGrow: 1,
+      padding: theme.spacing(5),
+      display: "flex",
+      justifyContent: "space-between",
+      width: "100%",
+    },
+    mainContent: {
+      flex: 1,
+      padding: theme.spacing(2),
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+      position: "relative",
+      display: "flex",
+      alignItems: "center",
+      alignSelf: "flex-end",
+      marginTop: "1rem",
+      marginBottom: "1rem",
+      border: "1px solid black",
+    },
+    btnPaper: {
+      padding: theme.spacing(2),
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      gap: "0.5rem",
+      paddingLeft: "0px",
+    },
+    button: {
+      right: theme.spacing(2),
+      cursor: "pointer",
+    },
+    emailBody: {
+      height: "max-content",
+      textAlign: "left",
+    },
+    indicator: {
+      backgroundColor: `${themeColor} !important`,
+    },
+  }));
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -112,7 +113,7 @@ const EmailSequence: React.FC<{
   dataId: string;
   employeeId: string;
 }> = ({ visible, onClose, dataId, employeeId }) => {
-  const { state } = useCustomContext()
+  const { state } = useCustomContext();
   const classes = useStyles(state.themeColor)();
 
   const [loading, setLoading] = useState(false);
@@ -165,7 +166,7 @@ const EmailSequence: React.FC<{
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
-    setCurrentEmailInfo(allEmails[newValue])
+    setCurrentEmailInfo(allEmails[newValue]);
   };
 
   return (
@@ -174,13 +175,24 @@ const EmailSequence: React.FC<{
         visible ? classes.visible : ""
       }`}
     >
-     
-        {loading ? (
-          <Box style={{ display: 'flex', alignItems: 'center', height: 'inherit', justifyContent: 'center', gap: '2rem'}}>
-          <Spinner message={`${state?.user?.name ?? "Ameya"} generating personalized email for you....`} />
-          </Box>
-        ) : (
-          <div className={classes.root}>
+      {loading ? (
+        <Box
+          style={{
+            display: "flex",
+            alignItems: "center",
+            height: "inherit",
+            justifyContent: "center",
+            gap: "2rem",
+          }}
+        >
+          <Spinner
+            message={`${
+              state?.user?.name ?? "Ameya"
+            }, perspecto is generating personalized email for you....`}
+          />
+        </Box>
+      ) : (
+        <div className={classes.root}>
           <div className={classes.mainContent} style={{ overflow: "auto" }}>
             <Grid container spacing={2} style={{ width: "100%" }}>
               <Grid item style={{ width: "100%" }}>
@@ -197,7 +209,6 @@ const EmailSequence: React.FC<{
                       style={{ cursor: "pointer" }}
                     />
                   </IconButton>
-                  ,
                 </Box>
               </Grid>
               <Tabs
@@ -240,9 +251,8 @@ const EmailSequence: React.FC<{
               </TabPanel>
             </Grid>
           </div>
-          </div>
-        )}
-     
+        </div>
+      )}
     </Paper>
   );
 };

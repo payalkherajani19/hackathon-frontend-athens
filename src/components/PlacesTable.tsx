@@ -39,6 +39,7 @@ const useStyles = makeStyles({
 
 interface Props {
     data: Array<any>
+    handleRowClick: (dataId: string) => void
 }
 const PlacesTable = (props: Props) => {
     const { data } = props
@@ -47,7 +48,7 @@ const PlacesTable = (props: Props) => {
 
   const handleEnrich = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>, dataId: string) => {
       e.preventDefault()
-      navigate(`/chat/${dataId}`)
+      props?.handleRowClick(dataId)
   }
 
   return (

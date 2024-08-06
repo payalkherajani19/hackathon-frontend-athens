@@ -1,15 +1,11 @@
-import React, { useState, MouseEvent, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Paper,
   Grid,
   makeStyles,
   Button,
-  Chip,
-  Menu,
-  MenuItem,
   Typography,
   List,
-  ListItem,
   ListItemText,
   TableContainer,
   Table,
@@ -17,15 +13,13 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  IconButton,
+  Box,
 } from "@material-ui/core";
-import LinkIcon from "@material-ui/icons/Link";
-import CancelIcon from "@material-ui/icons/Cancel";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import EmailSequence from "../components/EmailSequence";
-import Layout from "../components/Layout";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -99,15 +93,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const App: React.FC = () => {
+interface Props {
+  dataId: string;
+  handleGoBack: () => void;
+}
+const ProspectoSalon: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
 
   const [buisnessDetailInfo, setBuisnessDetailInfo] = useState<any>([]);
   const [openEmailComponent, setOpenEmailComponent] = useState(false);
   const [employeeId, setEmployeeId] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { dataId } = useParams();
+  const { dataId } = props;
 
   const fetchDataBasedOnDataId = async () => {
     try {
@@ -122,7 +121,7 @@ const App: React.FC = () => {
       );
       setBuisnessDetailInfo(response.data);
     } catch (error) {
-      console.error(error);
+      setError("Something went wrong, please retry");
     } finally {
       setLoading(false);
     }
@@ -145,135 +144,174 @@ const App: React.FC = () => {
     fetchDataBasedOnDataId();
   }, []);
 
-
   return (
-    <Layout>
+    <>
       {loading ? (
-        <Spinner />
+        <Box
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            gap: "2rem",
+          }}
+        >
+          <Spinner message={`Ameya, hold on, finding detail information....`} />
+        </Box>
       ) : (
         <div className={classes.root}>
           <div className={classes.mainContent}>
             <Grid container spacing={2}>
-              <Typography variant={"h5"}>
-                <b>{buisnessDetailInfo?.title ?? "-"}</b>
-              </Typography>
-              <div></div>
-              <Grid item xs={6} sm={12}>
-                <span>Address</span>
-                <Paper className={classes.paper}>
-                  <Typography variant="body1">
-                    {buisnessDetailInfo?.address
-                      ? buisnessDetailInfo?.address
-                      : "-"}
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid item xs={6} sm={12}>
-                <span>About</span>
-                <Paper className={`${classes.paper} ${classes.about}`}>
-                  <Typography variant="body1" style={{ textAlign: "left" }}>
-                    {buisnessDetailInfo?.about}
-                  </Typography>
-                </Paper>
-              </Grid>
+              {!Boolean(error) ? (
+                <>
+                  <Box style={{ display: "flex", alignItems: "center" }}>
+                    <IconButton
+                      aria-label="go-back"
+                      onClick={() => props?.handleGoBack()}
+                    >
+                      <ArrowBackOutlinedIcon />
+                    </IconButton>
+                    <Typography variant={"h5"}>
+                      <b>{buisnessDetailInfo?.title ?? "-"}</b>
+                    </Typography>
+                  </Box>
+                  <Grid item xs={6} sm={12}>
+                    <span>Address</span>
+                    <Paper className={classes.paper}>
+                      <Typography variant="body1">
+                        {buisnessDetailInfo?.address
+                          ? buisnessDetailInfo?.address
+                          : "-"}
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={6} sm={12}>
+                    <span>About</span>
+                    <Paper className={`${classes.paper} ${classes.about}`}>
+                      <Typography variant="body1" style={{ textAlign: "left" }}>
+                        {buisnessDetailInfo?.about}
+                      </Typography>
+                    </Paper>
+                  </Grid>
 
-              <Grid item xs={6} sm={12}>
-                <span>Website</span>
-                <Paper className={`${classes.paper}`}>
-                  <Typography variant="body1" style={{ textAlign: "left" }}>
-                    {buisnessDetailInfo?.website}
-                  </Typography>
-                </Paper>
-              </Grid>
+                  <Grid item xs={6} sm={12}>
+                    <span>Website</span>
+                    <Paper className={`${classes.paper}`}>
+                      <Typography variant="body1" style={{ textAlign: "left" }}>
+                        {buisnessDetailInfo?.website}
+                      </Typography>
+                    </Paper>
+                  </Grid>
 
-              <Grid item xs={6} sm={12}>
-                <span>Type</span>
-                <Paper className={`${classes.paper}`}>
-                  <Typography variant="body1" style={{ textAlign: "left" }}>
-                    {buisnessDetailInfo?.type}
-                  </Typography>
-                </Paper>
-              </Grid>
+                  <Grid item xs={6} sm={12}>
+                    <span>Type</span>
+                    <Paper className={`${classes.paper}`}>
+                      <Typography variant="body1" style={{ textAlign: "left" }}>
+                        {buisnessDetailInfo?.type}
+                      </Typography>
+                    </Paper>
+                  </Grid>
 
-              <Grid item xs={6} sm={12}>
-                <span>Services</span>
-                <Paper
-                  className={`${classes.paper}`}
-                  style={{ height: "max-content", textAlign: "left" }}
-                >
-                  <List>
-                    {buisnessDetailInfo?.services?.map(
-                      (s: string, index: number) => {
-                        return (
-                          <ListItemText>
-                            {index + 1}
-                            {". "} {s}
-                          </ListItemText>
-                        );
-                      }
-                    )}
-                  </List>
-                </Paper>
-              </Grid>
-              <Grid item xs={6} sm={12}>
-                <span>Employers</span>
-                <TableContainer component={Paper} className={classes.paper}>
-                  <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>
-                          <b>Name</b>
-                        </TableCell>
-                        <TableCell>
-                          <b>Designation</b>
-                        </TableCell>
-                        <TableCell>
-                          <b>Action</b>
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {buisnessDetailInfo?.employeeDetails?.map((emp: any) => (
-                        <TableRow key={emp.id}>
-                          <TableCell component="th" scope="row">
-                            {emp?.name}
-                          </TableCell>
-                          <TableCell>{emp?.designation}</TableCell>
-                          <TableCell>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              style={{
-                                color: "white",
-                                cursor: "pointer",
-                              }}
-                              onClick={(e) => handleGenerate(e, emp?.id)}
-                            >
-                              Generate Email
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Grid>
-              <Grid item xs={6} sm={12}>
-                {openEmailComponent ? (
-                  <EmailSequence
-                    visible={openEmailComponent}
-                    onClose={handleClose}
-                    dataId={dataId}
-                    employeeId={employeeId}
-                  />
-                ) : null}
-              </Grid>
+                  <Grid item xs={6} sm={12}>
+                    <span>Services</span>
+                    <Paper
+                      className={`${classes.paper}`}
+                      style={{ height: "max-content", textAlign: "left" }}
+                    >
+                      <List>
+                        {buisnessDetailInfo?.services?.map(
+                          (s: string, index: number) => {
+                            return (
+                              <ListItemText>
+                                {index + 1}
+                                {". "} {s}
+                              </ListItemText>
+                            );
+                          }
+                        )}
+                      </List>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={6} sm={12}>
+                    <span>Employers</span>
+                    <TableContainer component={Paper} className={classes.paper}>
+                      <Table
+                        className={classes.table}
+                        aria-label="simple table"
+                      >
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>
+                              <b>Name</b>
+                            </TableCell>
+                            <TableCell>
+                              <b>Designation</b>
+                            </TableCell>
+                            <TableCell>
+                              <b>Action</b>
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {buisnessDetailInfo?.employeeDetails?.map(
+                            (emp: any) => (
+                              <TableRow key={emp.id}>
+                                <TableCell component="th" scope="row">
+                                  {emp?.name}
+                                </TableCell>
+                                <TableCell>{emp?.designation}</TableCell>
+                                <TableCell>
+                                  <Button
+                                    variant="contained"
+                                    color="primary"
+                                    style={{
+                                      color: "white",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={(e) => handleGenerate(e, emp?.id)}
+                                  >
+                                    Generate Email
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+                            )
+                          )}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </Grid>
+                  <Grid item xs={6} sm={12}>
+                    {openEmailComponent ? (
+                      <EmailSequence
+                        visible={openEmailComponent}
+                        onClose={handleClose}
+                        dataId={dataId}
+                        employeeId={employeeId}
+                      />
+                    ) : null}
+                  </Grid>
+                </>
+              ) : (
+                <>
+                <Box style={{ display: "flex", alignItems: "center", flexDirection: 'column' }}>
+                    <IconButton
+                      aria-label="go-back"
+                      onClick={() => props?.handleGoBack()}
+                    >
+                      <ArrowBackOutlinedIcon />
+                    </IconButton>
+                    <Typography variant={"h5"}>
+                      <b>{error}</b>
+                    </Typography>
+                  </Box>
+                </>
+              )}
             </Grid>
           </div>
         </div>
       )}
-    </Layout>
+    </>
   );
 };
 
-export default App;
+export default ProspectoSalon;

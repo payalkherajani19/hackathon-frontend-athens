@@ -6,8 +6,6 @@ import useCustomContext from "./Hook";
 import loadable from '@loadable/component'
 
 const ProjectPage = loadable(() => import('./pages/ProjectPage'))
-const SingleProject = loadable(() => import('./components/SingleProject'))
-const PropspectsSalon = loadable(() => import('./pages/ProspectsSalon'))
 const BrandVoicePage = loadable(() => import("./pages/BrandVoicePage"))
 
 interface WrapperProps {
@@ -35,13 +33,11 @@ const Wrapper = (props: WrapperProps) => {
 
 function App() {
   return (
-    <div className="App" style={{ height: '100vh', boxSizing: 'border-box', padding: '16px'}}>
+    <div className="App" style={{ height: '100vh', boxSizing: 'border-box'}}>
           <BrowserRouter>
            <Routes>
                <Route element={<Wrapper><ProjectPage /></Wrapper>} path="projects" />
-               {/* <Route element={<Wrapper><SingleProject /></Wrapper>} path="project/:id" /> */}
                <Route element={<Wrapper><PlacesListPage /></Wrapper> }  path="places"/>
-               <Route element={<Wrapper><PropspectsSalon /></Wrapper>} path="chat/:dataId" />
                <Route element={<Wrapper><BrandVoicePage /></Wrapper>} path="brandvoice" />
                <Route element={<SignupPage />} path="register" />
                <Navigate to='register' />
