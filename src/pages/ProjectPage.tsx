@@ -18,6 +18,9 @@ import data from '../data.json'
 import useCustomContext from "../Hook";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { SvgIcon } from '@material-ui/core'
+import GroupIcon from '../assests/Group.svg';
+import SvgImage from "../components/SvgImage";
 
 const useStyles = makeStyles((theme) => ({
   projects: {
@@ -114,6 +117,7 @@ const ProjectPage = () => {
                     })
                   }
             </Grid>
+            <SvgImage src="../assests/Group.svg" color="#1E90FF" />
         </Box>
         <Dialog
           onClose={handleClose}

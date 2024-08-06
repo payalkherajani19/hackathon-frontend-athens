@@ -10,11 +10,15 @@ import {
   TextField,
   Tabs,
   Tab,
+  Dialog,
+  Toolbar,
 } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import axios from "axios";
 import Spinner from "./Spinner";
+import CloseIcon from "@material-ui/icons/Close";
 import useCustomContext from "../Hook";
+import AppointmentBooking from "./AppointmentBooking";
 
 const useStyles = (themeColor: string) =>
   makeStyles((theme) => ({
@@ -124,6 +128,7 @@ const EmailSequence: React.FC<{
   });
   const [value, setValue] = React.useState(0);
   const contentEditableRef = useRef<any>(null);
+  const [openSchedulingLink, setOpenSchedulingLink] = useState(false);
 
   const generatePersonalizedEmail = async () => {
     try {
@@ -169,6 +174,14 @@ const EmailSequence: React.FC<{
     setCurrentEmailInfo(allEmails[newValue]);
   };
 
+  const handleOpenSchedulingLink = () => {
+    setOpenSchedulingLink(true);
+  };
+
+  const handleCloseSchedulingLink = () => {
+    setOpenSchedulingLink(false);
+  };
+
   return (
     <Paper
       className={`${classes.slidingComponent} ${
@@ -194,62 +207,97 @@ const EmailSequence: React.FC<{
       ) : (
         <div className={classes.root}>
           <div className={classes.mainContent} style={{ overflow: "auto" }}>
-            <Grid container spacing={2} style={{ width: "100%" }}>
-              <Grid item style={{ width: "100%" }}>
-                <Box className={classes.btnPaper}>
-                  <Typography variant="subtitle1">
-                    <b>Hyper Personalized Email</b>
-                  </Typography>
-                  <IconButton
-                    onClick={onClose}
-                    style={{ position: "absolute", right: "50px" }}
+            {openSchedulingLink ? (
+              <>
+                <Dialog
+                  fullScreen
+                  open={openSchedulingLink}
+                  onClose={handleCloseSchedulingLink}
+                >
+                  <Toolbar>
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      onClick={handleCloseSchedulingLink}
+                      aria-label="close"
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  </Toolbar>
+                  <AppointmentBooking />
+                </Dialog>
+              </>
+            ) : (
+              <>
+                <Grid container spacing={2} style={{ width: "100%" }}>
+                  <Grid item style={{ width: "100%" }}>
+                    <Box className={classes.btnPaper}>
+                      <Typography variant="subtitle1">
+                        <b>Hyper Personalized Email</b>
+                      </Typography>
+                      <IconButton
+                        onClick={onClose}
+                        style={{ position: "absolute", right: "50px" }}
+                      >
+                        <CancelIcon
+                          fontSize="large"
+                          style={{ cursor: "pointer" }}
+                        />
+                      </IconButton>
+                    </Box>
+                  </Grid>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="simple tabs example"
+                    classes={{
+                      indicator: classes.indicator,
+                    }}
                   >
-                    <CancelIcon
-                      fontSize="large"
-                      style={{ cursor: "pointer" }}
-                    />
-                  </IconButton>
-                </Box>
-              </Grid>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="simple tabs example"
-                classes={{
-                  indicator: classes.indicator,
-                }}
-              >
-                {allEmails?.map((email: any) => {
-                  return <Tab label={email?.tone} />;
-                })}
-              </Tabs>
-              <TabPanel value={value} index={value}>
-                <Grid item xs={6} sm={12}>
-                  <span>Email Subject</span>
-                  <Paper className={classes.paper}>
-                    <TextField
-                      value={currentEmailInfo?.subject}
-                      onChange={(e) => handleSubjectChange(e)}
-                      style={{ width: "100%" }}
-                    />
-                  </Paper>
+                    {allEmails?.map((email: any) => {
+                      return <Tab label={email?.tone} />;
+                    })}
+                  </Tabs>
+                  <TabPanel value={value} index={value}>
+                    <Grid item xs={6} sm={12}>
+                      <span>Email Subject</span>
+                      <Paper className={classes.paper}>
+                        <TextField
+                          value={currentEmailInfo?.subject}
+                          onChange={(e) => handleSubjectChange(e)}
+                          style={{ width: "100%" }}
+                        />
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6} sm={12}>
+                      <span>Email Body</span>
+                      <Paper
+                        className={`${classes.emailBody} ${classes.paper}`}
+                      >
+                        <div
+                          contentEditable
+                          ref={contentEditableRef}
+                          dangerouslySetInnerHTML={{
+                            __html: currentEmailInfo?.body,
+                          }}
+                          onBlur={handleBlur}
+                          style={{ border: "1px solid #ccc", padding: "10px" }}
+                        ></div>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={6} sm={12}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleOpenSchedulingLink}
+                      >
+                        Scheduling Link
+                      </Button>
+                    </Grid>
+                  </TabPanel>
                 </Grid>
-                <Grid item xs={6} sm={12}>
-                  <span>Email Body</span>
-                  <Paper className={`${classes.emailBody} ${classes.paper}`}>
-                    <div
-                      contentEditable
-                      ref={contentEditableRef}
-                      dangerouslySetInnerHTML={{
-                        __html: currentEmailInfo?.body,
-                      }}
-                      onBlur={handleBlur}
-                      style={{ border: "1px solid #ccc", padding: "10px" }}
-                    ></div>
-                  </Paper>
-                </Grid>
-              </TabPanel>
-            </Grid>
+              </>
+            )}
           </div>
         </div>
       )}
