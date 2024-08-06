@@ -112,7 +112,7 @@ const ProspectoSalon: React.FC<Props> = (props: Props) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/leads/businessDetailedInfo`,
+        `https://backend-athens.onrender.com/api/leads/businessDetailedInfo`,
         {
           params: {
             data_id: dataId,

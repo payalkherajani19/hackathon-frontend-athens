@@ -21,7 +21,7 @@ const PlacesListPage = () => {
     if (prompt) {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/leads/businessesFromPrompt`,
+          `https://backend-athens.onrender.com/api/leads/businessesFromPrompt`,
           {
             params: {
               prompt: btoa(prompt),
