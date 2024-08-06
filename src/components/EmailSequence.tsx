@@ -129,7 +129,7 @@ const EmailSequence: React.FC<{
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://backend-athens.onrender.com/api/email/generatePersonalized?`,
+        `${process.env.REACT_APP_API_URL}/api/email/generatePersonalized?`,
         {
           params: {
             businessId: dataId,
