@@ -74,7 +74,7 @@ const ProjectPage = () => {
 
   const getBrandColor = async() => {
    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}api/projects/getPrimaryColour`, {
+      const response = await axios.get('https://backend-athens.onrender.com/api/projects/getPrimaryColour', {
         params: {
            user_email: state.user.email
         }
