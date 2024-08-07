@@ -1,22 +1,17 @@
 import React from "react";
 import {
   Container,
-  CssBaseline,
   Typography,
   TextField,
   Button,
   Grid,
   makeStyles,
-  Paper,
-  Link,
-  Divider,
 } from "@material-ui/core";
-import { GoogleLogin } from "@react-oauth/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { LinkedIn } from "react-linkedin-login-oauth2";
-import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
+import { LinkedIn as LinkedInIcon } from "@material-ui/icons";
+import GoogleIcon from '../components/GoogleIcon'
 import useCustomContext from "../Hook";
+import RegisterImg from "../assests/register.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: " linear-gradient(#000, #fff)",
   },
   paper: {
     margin: theme.spacing(3),
@@ -33,8 +27,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(3),
-    boxShadow: theme.shadows[3],
-    width: "40%",
+    width: "70%",
   },
   form: {
     width: "100%",
@@ -54,128 +47,176 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "5px",
     marginLeft: "5px",
   },
+  button: {
+    margin: theme.spacing(1),
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textTransform: "none",
+    marginLeft: '0px',
+    marginRight: '0px',
+    padding: '0.5rem'
+  },
+  googleButton: {
+    backgroundColor: "#4285F4",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "#357ae8",
+    },
+  },
+  linkedInButton: {
+    backgroundColor: "#0077B5",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "#005582",
+    },
+  },
+  icon: {
+    marginRight: theme.spacing(1),
+  },
 }));
 
 const App: React.FC = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const { state, setState } = useCustomContext()
+  const { state, setState } = useCustomContext();
 
   const handleSubmit = () => {
     navigate("/projects");
-    setState({ ...state, user: {
-      id: '1',
-      name: 'Ameya', 
-      email: 'ameya@appointy.com'
-    }})
+    setState({
+      ...state,
+      user: {
+        id: "1",
+        name: "Ameya",
+        email: "ameya@appointy.com",
+      },
+    });
   };
 
   return (
-    <Container component="main" maxWidth="xl" className={classes.root}>
-      <CssBaseline />
-      <Paper className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Create an Account
-        </Typography>
+    <Container
+      component="main"
+      maxWidth="xl"
+      className={classes.root}
+      style={{ padding: "0px" }}
+    >
+      <Grid container style={{ height: "100vh" }}>
+        <Grid item xs={6}>
+          <img
+            src={RegisterImg}
+            alt="Full Height"
+            style={{
+              height: "100%",
+              objectFit: "cover",
+              top: 0,
+              left: 0,
+              width: "100%",
+            }}
+          />
+        </Grid>
         <Grid
-          container
-          justifyContent="space-around"
-          className={classes.authProviders}
+          item
+          xs={6}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <Grid item>
-            <GoogleOAuthProvider clientId="<your_client_id>">
-              <GoogleLogin onSuccess={() => console.log("Yay Success")} />
-            </GoogleOAuthProvider>
-          </Grid>
-
-          <Grid item>
-            <LinkedIn
-              clientId="86vhj2q7ukf83q"
-              redirectUri={`${window.location.origin}/linkedin`}
-              onSuccess={(code) => {
-                console.log(code);
-              }}
-              onError={(error) => {
-                console.log(error);
+          <div className={classes.paper}>
+            <Typography
+              component="h3"
+              variant="h5"
+              style={{ marginBottom: "2rem" }}
+            >
+              <b>Create your free account</b>
+            </Typography>
+            <form className={classes.form} noValidate>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    id="fullName"
+                    label="Full Name"
+                    name="fullName"
+                    autoComplete="name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSubmit}
+              >
+                Create Account
+              </Button>
+            </form>
+            <Grid
+              container
+              justifyContent="center"
+              className={classes.authProviders}
+            >
+              <div className={classes.spacer}></div>
+              <span>or</span>
+              <div className={classes.spacer}></div>
+            </Grid>
+            <Grid
+              container
+              justifyContent="space-around"
+              style={{
+                flexDirection: "column",
               }}
             >
-              {({ linkedInLogin }) => (
-                <img
-                  onClick={linkedInLogin}
-                  src={linkedin}
-                  alt="Sign in with Linked In"
-                  style={{ maxWidth: "180px", cursor: "pointer",  }}
-                />
-              )}
-            </LinkedIn>
-          </Grid>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  className={`${classes.button} ${classes.googleButton}`}
+                  startIcon={<GoogleIcon />}
+                >
+                  Sign Up with Google
+                </Button>
+              </Grid>
+
+              <Grid item>
+                <Button
+                  variant="contained"
+                  className={`${classes.button} ${classes.linkedInButton}`}
+                  startIcon={<LinkedInIcon className={classes.icon} />}
+                >
+                  Sign Up with LinkedIn
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
         </Grid>
-        <Grid
-          container
-          justifyContent="center"
-          className={classes.authProviders}
-        >
-          <div className={classes.spacer}></div>
-          <span>or</span>
-          <div className={classes.spacer}></div>
-        </Grid>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="fullName"
-                label="Full Name"
-                name="fullName"
-                autoComplete="name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={handleSubmit}
-          >
-            Create Account
-          </Button>
-          {/* <Grid container justify-content="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Log in
-              </Link>
-            </Grid>
-          </Grid> */}
-        </form>
-      </Paper>
+      </Grid>
     </Container>
   );
 };
